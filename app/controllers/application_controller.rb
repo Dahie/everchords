@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :authtoken
 
   def enutils
-    @enutils ||= ENUtils::Core.new(authtoken, false) # false = sandbox
+    @enutils ||= ENUtils::Core.new(authtoken, Rails.env.production?)
   end
 
   def authtoken
