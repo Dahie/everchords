@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
@@ -19,9 +18,6 @@ gem 'coffee-rails', '~> 4.2'
 # Use of devise and Omniauth for authentication
 gem 'devise'
 gem 'omniauth'
-#gem 'omniauth-google-oauth2'
-
-
 gem 'omniauth-evernote'
 gem "evernote_oauth"
 gem 'evernote_utils'
@@ -39,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-glyphicons'
+
+gem "figaro"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

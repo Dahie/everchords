@@ -1,6 +1,6 @@
 default: &default
-  consumer_key: "trump_sucks"
-  consumer_secret: "19331109"
+  consumer_key: <%= ENV['EN_CONSUMER_KEY'] %>
+  consumer_secret: <%= ENV['EN_CONSUMER_SECRET'] %>
   sandbox: true
 
 development:

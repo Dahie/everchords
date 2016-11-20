@@ -32,3 +32,8 @@ Setup your evernote credentials.
     cp config/evernote_example.yml config/evernote.yml
 
 Copies the configuration, you have to add your credentials here.
+
+
+# Theme
+
+Theme based on (Bootswatch Sandbox)[https://bootswatch.com/sandstone/]
