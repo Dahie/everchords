@@ -40,17 +40,12 @@
                 Logout
                 %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }
 
-
-
-
     .container.main
-      - if notice
+      - if notice.present?
         .alert.alert-success= notice
-      - if alert
+      - if alert.present?
         .alert.alert-danger= alert
-      .row-fluid
-        %p.notice= notice
-        %p.alert= alert
+      .container
 
         = yield
     %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" }
