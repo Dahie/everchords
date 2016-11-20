@@ -1,0 +1,11 @@
+default: &default
+  consumer_key: "trump_sucks"
+  consumer_secret: "19331109"
+  sandbox: true
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  sandbox: false

@@ -1,0 +1,57 @@
+%html
+  %head
+    %title
+      = @title
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" }
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-default.sidebar{role: 'navigation'}
+      .container-fluid
+        .navbar-header
+          %button{ type: "button", class: "navbar-toggle collapsed", 'data-toggle' => "collapse", 'data-target' => "#bs-example-navbar-collapse-1", 'aria-expanded' => "false" }
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{ href: "#" } Everchords
+
+        #bs-example-navbar-collapse-1.navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li.active>
+              %a{ href: "#" }
+                Home
+                %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-home{ style: "font-size:16px;" }
+            - if @songs
+              %li.dropdown
+                %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
+                  Songs
+                  %span.caret
+                  %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-list{ style: "font-size:16px;" }
+                %ul.dropdown-menu.forAnimate{ role: "menu" }
+                  - @songs.each do |song|
+                    %li{ class: "#{"active" if song.guid == params['id']}" }
+                      = link_to song.title, "/songs/#{song.guid}"
+            %li
+              = link_to logout_path do
+                Logout
+                %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }
+
+
+
+
+    .container.main
+      - if notice
+        .alert.alert-success= notice
+      - if alert
+        .alert.alert-danger= alert
+      .row-fluid
+        %p.notice= notice
+        %p.alert= alert
+
+        = yield
+    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" }
+    %script{ src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin: "anonymous" }

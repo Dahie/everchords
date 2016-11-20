@@ -1,0 +1,4 @@
+.row
+  .col-md-6.list-group
+    - songs.each do |song|
+      = link_to song.title, "/songs/#{song.guid}", class: "list-group-item"

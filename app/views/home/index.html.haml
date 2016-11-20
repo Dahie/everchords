@@ -1,0 +1,4 @@
+- if authtoken
+  = render 'songs/list', songs: @songs
+- else
+  = link_to 'Login via Evernote', '/auth/evernote'

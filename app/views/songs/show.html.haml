@@ -1,0 +1,6 @@
+%div{ style: "column-count: #{@chord_lyrics.columns_count}" }
+  = @chord_lyrics.to_html.html_safe
+
+%h3 Contained Chords
+- @chord_lyrics.contained_chords.sort.each do |chord|
+  %kbd= chord
