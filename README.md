@@ -1,29 +1,14 @@
-# README
+# Everchords
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 # Setup
+
+## Pre-requisites
+
+You need an Evernote-Account and get an API token to use this app.
+
+The app expects a Notebook by the name `Songbook` in your Account.
+
 
 Generate your secrets like with any other Rails app.
 
