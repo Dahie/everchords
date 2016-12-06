@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   resource :home, controller: :home, only: :index do
   end
-  resources :songs, only: :show
+  resources :songs, only: [:show, :update]
 end

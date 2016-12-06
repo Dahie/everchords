@@ -4,3 +4,7 @@
 %h3 Contained Chords
 - @chord_lyrics.contained_chords.sort.each do |chord|
   %kbd= chord
+
+%nav.navbar.navbar-default
+  .container-fluid
+    = link_to 'Refresh', song_path(@song), method: :post
