@@ -1,0 +1,6 @@
+%h2= t('devise.sessions.new.sign_in')
+
+= link_to t('devise.sessions.new.sign_in_with_provider', provider: t("omniauth.providers.evernote")),
+  user_evernote_omniauth_authorize_path, class: 'btn btn-primary btn-large'
+
+%hr

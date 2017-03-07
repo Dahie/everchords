@@ -35,10 +35,11 @@
                   - @songs.each do |song|
                     %li{ class: "#{"active" if song.guid == params['id']}" }
                       = link_to song.title, "/songs/#{song.guid}"
-            %li
-              = link_to logout_path do
-                Logout
-                %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }
+            - if current_user.present?
+              %li
+                = link_to logout_path do
+                  Logout
+                  %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }
 
     .container.main
       - if notice.present?

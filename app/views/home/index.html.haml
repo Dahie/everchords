@@ -1,4 +1,3 @@
-- if authtoken
+%h2 Songbook
+- if current_user.present?
   = render 'songs/list', songs: @songs
-- else
-  = link_to 'Login via Evernote', '/auth/evernote'

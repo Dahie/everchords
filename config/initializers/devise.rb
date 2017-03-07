@@ -248,6 +248,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  evernote_config = Rails.application.config_for(:evernote).with_indifferent_access
+  config.omniauth :evernote, evernote_config[:consumer_key], evernote_config[:consumer_secret], client_options: { site: evernote_config[:url]}
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -18,8 +18,9 @@ class SongsController < ApplicationController
   private
 
   def update_song
-    evernote_note = enutils.notestore.getNote(authtoken, params['id'], true, true, false, false)
+    evernote_note = enutils.notestore.getNote(current_user.evernote_token, params['id'], true, true, false, false)
     @song.update_from_evernote(evernote_note)
+    @song.user = current_user
     @song.save!
   end
 end

@@ -1,7 +1,20 @@
-class Song < ApplicationRecord
-  #belongs_to :user
+# == Schema Information
+#
+# Table name: songs
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  body       :text
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  guid       :string
+#
 
-  #validate :user, presence: true
+class Song < ApplicationRecord
+  belongs_to :user
+
+  validates :user, presence: true
   validates :title, presence: true
   validates :body, presence: true
 
