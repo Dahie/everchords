@@ -1,3 +1,13 @@
-%h2 Songbook
 - if current_user.present?
-  = render 'songs/list', songs: @songs
+  .row
+    .col-md-6
+      %h2 Originals
+      = render 'songs/list', songs: @original_songs
+    .col-md-6
+      %h2 Songbook
+      = render 'songs/list', songs: @songs
+- else
+  %h2= t('devise.sessions.new.sign_in')
+
+  = link_to t('devise.sessions.new.sign_in_with_provider', provider: t("omniauth.providers.evernote")),
+    user_evernote_omniauth_authorize_path, class: 'btn btn-primary btn-large'
