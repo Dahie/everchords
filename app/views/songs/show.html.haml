@@ -1,10 +1,15 @@
+
 %div{ style: "column-count: #{@chord_lyrics.columns_count}" }
+  .panel.panel-default.panel-meta
+    .panel-body
+      .pull-right
+        %ul.nav.nav-pills
+          %li{role: 'presentation'}
+            = button_to song_path(@song.guid), method: :put, class: 'btn btn-default btn-sm', role: 'button' do
+              %i.fa.fa-refresh
+      %h4= @song.title
+      %p
+        Chords:
+        - @chord_lyrics.contained_chords.sort.each do |chord|
+          %kbd= chord
   = @chord_lyrics.to_html.html_safe
-
-%h3 Contained Chords
-- @chord_lyrics.contained_chords.sort.each do |chord|
-  %kbd= chord
-
-%nav.navbar.navbar-default
-  .container-fluid
-    = link_to 'Refresh', song_path(@song.guid), method: :put

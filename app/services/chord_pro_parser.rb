@@ -40,7 +40,7 @@ class ChordProParser
     html_output = chord_pro_text.dup
     html_output.gsub!(/\[(\S+?)\]/, '<kbd>\1</kbd>')
     html_output.gsub!(/\{colb\}/, '<span class="column-break">')
-    html_output.gsub!(/\{title:([\S\s]+?)\}/, '<h2>\1</h2>')
+    html_output.gsub!(/\{title:([\S\s]+?)\}/, '<h2 class="title">\1</h2>')
     html_output.gsub!(/\{artist:([\S\s]+?)\}/, '<div class="artist">\1</d>')
     html_output.gsub!(/\{album:([\S\s]+?)\}/, '<div class="album">\1</div>')
     html_output.gsub!(/\{c:([\S\s]+?)\}/, '<span class="comment text-muted">\1</span>')

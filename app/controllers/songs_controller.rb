@@ -6,7 +6,7 @@ class SongsController < ApplicationController
       update_song
     end
 
-    @title = "#{@song.title} - #{@title}"
+    @title = "#{@song.title} - Everchords"
     @chord_lyrics = ChordProParser.new(@song.body)
   end
 

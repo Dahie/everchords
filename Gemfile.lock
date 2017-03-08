@@ -50,9 +50,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-glyphicons (0.0.1)
-      railties (>= 3.0)
-      sass (>= 3.2)
     builder (3.2.2)
     byebug (9.0.6)
     coderay (1.1.1)
@@ -87,6 +84,8 @@ GEM
     ffi (1.9.14)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -240,13 +239,13 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
-  bootstrap-glyphicons
   byebug
   coffee-rails (~> 4.2)
   devise
   evernote_oauth
   evernote_utils
   figaro
+  font-awesome-rails
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
