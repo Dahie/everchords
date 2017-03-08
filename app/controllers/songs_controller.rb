@@ -13,6 +13,7 @@ class SongsController < ApplicationController
   def update
     @song = Song.find_or_initialize_by(guid: params['id'])
     update_song
+    redirect_to song_path(@song.guid)
   end
 
   private
