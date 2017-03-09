@@ -10,8 +10,9 @@ class SongsController < ApplicationController
     @chord_lyrics = ChordProParser.new(@song.body)
 
     @contained_chords = @chord_lyrics.contained_chords.sort.map do |chord|
-      chord_data = ChordService.new(chord).fetch
-      chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
+      #chord_data = ChordService.new(chord).fetch
+      #chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
+      {'original_name' => chord}
     end
 
   end
