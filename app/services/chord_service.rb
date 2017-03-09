@@ -26,8 +26,10 @@ class ChordService
   def fetch
     @options = { query: { ak: ENV['UKULELE_CHORDS_TOKEN'], r: root, typ: type } }
 
-    Rails.cache.fetch("#{root}/#{type}", expires_in: 12.days) do
-      self.class.get("/get", @options)
+    Rails.cache.fetch("#{root}/#{type}", expires_in: 12.days, force: Rails.cache.fetch("#{root}/#{type}").nil?) do
+      resp = self.class.get("/get", @options)
+      puts resp.inspect
+      resp
     end
   end
 
