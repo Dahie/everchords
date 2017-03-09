@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def enutils
-    puts current_user.inspect
     @enutils ||= ENUtils::Core.new(current_user.evernote_token, Rails.env.production?)
   end
 end
