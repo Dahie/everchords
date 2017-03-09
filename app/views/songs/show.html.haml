@@ -10,6 +10,7 @@
       %h4= @song.title
       %p
         Chords:
-        - @chord_lyrics.contained_chords.sort.each do |chord|
-          %kbd= chord
+        - @contained_chords.each do |chord|
+          %a{ tabindex: "0", role:"button", data: {html: "true", placement: 'bottom', toggle: "popover", trigger: "focus", content: "<div><img src=\"#{chord['chord_diag_mini']}\"></div>" } }
+            %kbd= chord['original_name']
   = @chord_lyrics.to_html.html_safe

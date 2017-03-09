@@ -22,6 +22,7 @@ gem 'omniauth-evernote'
 gem "evernote_oauth"
 gem 'evernote_utils'
 gem "haml-rails"
+gem 'httparty'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
