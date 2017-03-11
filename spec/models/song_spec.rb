@@ -25,8 +25,6 @@ describe Song do
 
     specify { expect(build(:song, body: "")).not_to be_valid }
     specify { expect(build(:song, body: nil)).not_to be_valid }
-
-    specify { expect(build(:song, secret_token: nil)).not_to be_valid }
   end
 
   describe :scopes do
@@ -36,10 +34,10 @@ describe Song do
 
   describe 'set_secret_token' do
     it 'updates token' do
-      subject.secret_token = 'Balbla'
+      subject.secret_token = nil
       expect {
         subject.set_secret_token
-      }.to change(subject, :secret_token).from('Balbla')
+      }.to change(subject, :secret_token).from(nil)
     end
   end
 end

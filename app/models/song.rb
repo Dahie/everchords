@@ -31,7 +31,7 @@ class Song < ApplicationRecord
   end
 
   def set_secret_token
-    self.secret_token = Devise.friendly_token.first(8)
+    self.secret_token ||= Devise.friendly_token.first(8)
   end
 
   def share_url
