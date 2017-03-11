@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  get '/logout' => 'login#logout', :as => 'logout'
   get '/oauth_failure' => 'login#oauth_failure'
 
   resource :home, controller: :home, only: :index do

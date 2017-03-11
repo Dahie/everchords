@@ -1,0 +1,21 @@
+#bs-example-navbar-collapse-1.navbar-collapse.collapse
+  %ul.nav.navbar-nav
+    %li.active>
+      %a{ href: root_path }
+        Home
+        %span.pull-right.hidden-xs.showopacity.fa.fa-home{ style: "font-size:16px;" }
+    - if @songs
+      %li.dropdown
+        %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
+          Songs
+          %span.caret
+          %span.pull-right.hidden-xs.showopacity.fa.fa-music{ style: "font-size:16px;" }
+        %ul.dropdown-menu.forAnimate{ role: "menu" }
+          - @songs.each do |song|
+            %li{ class: "#{"active" if song.guid == params['id']}" }
+              = link_to song.title, "/songs/#{song.guid}"
+    - if current_user.present?
+      %li
+        = link_to destroy_user_session_path do
+          Logout
+          %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }
