@@ -19,6 +19,10 @@
 $(function(){
     // Enables popover
     $("[data-toggle=popover]").popover();
+    $('.bs-song-meta-modal-sm').on('shown.bs.modal', function () {
+      $('#shareSongUrl').focus();
+      $('#shareSongUrl').select();
+    })
 });
 
 

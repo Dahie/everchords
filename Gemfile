@@ -17,12 +17,14 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use of devise and Omniauth for authentication
 gem 'devise'
+gem 'devise-i18n'
 gem 'omniauth'
 gem 'omniauth-evernote'
 gem "evernote_oauth"
 gem 'evernote_utils'
 gem "haml-rails"
 gem 'httparty'
+gem 'aasm'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -46,7 +48,11 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :development do

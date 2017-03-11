@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   def index
     if current_user&.evernote_token
-      @original_songs = enutils.notes(notebook: 'Songbook Originals', limit: 50)
-      @songs = enutils.notes(notebook: 'Songbook', limit: 50)
+      @original_songs = evernote_service.notes('Songbook Originals')
+      @songs = evernote_service.notes('Songbook')
     else
       @original_songs = []
       @songs = []
