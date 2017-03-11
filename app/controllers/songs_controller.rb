@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_filter :load_resource, only: [:show, :update]
+  before_action :authenticate_user!, only: [:update]
 
   def show
     @songs = evernote_service.notes('Songbook')

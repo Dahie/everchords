@@ -4,7 +4,7 @@
       %a{ href: root_path }
         Home
         %span.pull-right.hidden-xs.showopacity.fa.fa-home{ style: "font-size:16px;" }
-    - if @songs
+    - if current_user && @songs
       %li.dropdown
         %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
           Songs

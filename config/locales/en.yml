@@ -2,6 +2,9 @@ en:
   omniauth:
     providers:
 
+  home:
+    index:
+      login_with_evernote: Signup with Evernote
   songs:
     show:
       chords: 'Chords:'

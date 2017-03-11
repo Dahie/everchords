@@ -1,11 +1,8 @@
-
 %div{ style: "column-count: #{@chord_lyrics.columns_count}" }
   .panel.panel-default.panel-meta
     .panel-body
       .pull-right
         %ul.nav.nav-pills
-          %li{role: 'presentation'}
-
           %li
             %button.btn.btn-info.btn-sm{ type: "button", data: { toggle: "modal", target: ".bs-song-meta-modal" } }
               %i.fa.fa-info
@@ -27,7 +24,10 @@
                       %i.fa.fa-refresh
                       Refresh
 
-      %h4= @song.title
+      %h4
+        = link_to root_path do
+          %i.fa.fa-home
+        = @song.title
       %p
         = t('.chords')
         - @contained_chords.each do |chord|
