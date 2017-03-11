@@ -18,11 +18,12 @@
                     %form.form-horizonal
                       .form-group
                         %label{ for: "shareSongUrl" }=t ('.share')
-                        %input#shareSongUrl.form-control{ type: "text", value: request.original_url+@song.share_url, readonly: true, autofocus: true }
-                  .modal-footer
-                    = button_to song_path(@song.guid), method: :put, class: 'btn btn-default btn-sm', role: 'button' do
-                      %i.fa.fa-refresh
-                      Refresh
+                        %input#shareSongUrl.form-control{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
+                  - if current_user && @song.user == current_user
+                    .modal-footer
+                      = button_to song_path(@song.guid), method: :put, class: 'btn btn-default btn-sm', role: 'button' do
+                        %i.fa.fa-refresh
+                        Refresh
 
       %h4
         = link_to root_path do
