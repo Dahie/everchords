@@ -1,3 +1,15 @@
 // Place all the styles related to the Song controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media (min-width: 600px) {
+  .song-container {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 900px) {
+  .song-container {
+    column-count: 3;
+  }
+}

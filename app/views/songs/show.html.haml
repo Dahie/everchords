@@ -1,4 +1,4 @@
-%div{ style: "column-count: #{@chord_lyrics.columns_count}" }
+.song-container
   .panel.panel-default.panel-meta
     .panel-body
       .pull-right
@@ -24,7 +24,6 @@
                       = button_to song_path(@song.guid), method: :put, class: 'btn btn-default btn-sm', role: 'button' do
                         %i.fa.fa-refresh
                         Refresh
-
       %h4
         = link_to root_path do
           %i.fa.fa-home
@@ -34,4 +33,5 @@
         - @contained_chords.each do |chord|
           %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom', toggle: "popover", trigger: "focus", content: "<div><img src=\"#{chord['chord_diag_mini']}\"></div>" } }
             %kbd= chord['original_name']
+
   = @chord_lyrics.to_html.html_safe
