@@ -14,12 +14,12 @@
 #  current_sign_in_ip     :string
 #  last_sign_in_ip        :string
 #  uid                    :string
-#  provider               :string
 #  evernote_token         :string
-#  username               :string           not null
-#  avatar                 :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  provider               :string
+#  username               :string
+#  avatar                 :string
 #
 
 require 'spec_helper'

@@ -9,7 +9,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  guid         :string
-#  published    :string           default("f")
+#  published    :boolean          default(FALSE)
 #  secret_token :string
 #
 
