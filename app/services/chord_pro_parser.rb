@@ -38,6 +38,8 @@ class ChordProParser
 
   def to_html
     html_output = chord_pro_text.dup
+
+    puts html_output
     html_output.gsub!(/\[Riff([\S\s]+?)\]/, '<kbd>Riff \1</kbd>')
     html_output.gsub!(/\[(\S+?)\]/, '<kbd>\1</kbd>')
     html_output.gsub!(/\{colb\}/, '<span class="column-break">')
