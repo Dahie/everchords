@@ -36,10 +36,14 @@ class ChordProParser
     'Ab': 'G#'
   }.freeze
 
-  def to_html
-    html_output = chord_pro_text.dup
+  def sanitizer
+    @sanitizer ||= Rails::Html::FullSanitizer.new
+  end
 
-    puts html_output
+  def to_html
+    html_output = HtmlToPlainText.plain_text(chord_pro_text.dup)
+    puts html_output.inspect
+
     html_output.gsub!(/\[Riff([\S\s]+?)\]/, '<kbd>Riff \1</kbd>')
     html_output.gsub!(/\[(\S+?)\]/, '<kbd>\1</kbd>')
     html_output.gsub!(/\{colb\}/, '<span class="column-break">')
@@ -47,7 +51,7 @@ class ChordProParser
     # reference http://www.chordpro.org/chordpro/v50.html
     html_output.gsub!(/\{title:([\S\s]+?)\}/, '<h2 class="title">\1</h2>')
     html_output.gsub!(/\{t:([\S\s]+?)\}/, '<h2 class="title">\1</h2>')
-    html_output.gsub!(/\{artist:([\S\s]+?)\}/, '<div class="artist">\1</d>')
+    html_output.gsub!(/\{artist:([\S\s]+?)\}/, '<div class="artist">\1</div>')
     html_output.gsub!(/\{a:([\S\s]+?)\}/, '<div class="artist">\1</d>')
     html_output.gsub!(/\{album:([\S\s]+?)\}/, '<div class="album">\1</div>')
     html_output.gsub!(/\{time:([\S\s]+?)\}/, '<div class="time">\1</div>')
@@ -62,12 +66,18 @@ class ChordProParser
     html_output.gsub!(/\{comment:([\S\s]+?)\}/, '<span class="comment text-muted">\1</span>')
     html_output.gsub!(/\{c:([\S\s]+?)\}/, '<span class="comment text-muted">\1</span>')
     html_output.gsub!(/\{chorus\}/, '<span class="comment text-muted">Chorus</span>')
+
+    html_output.gsub!(/\{start_of_verse\}([\S\s]+?)\{end_of_verse\}/, '<p class="verse">\1</p>')
+    html_output.gsub!(/\{sov\}([\S\s]+?)\{start_of_verse\}/, '<p class="verse">\1</p>')
+
     #html_output.gsub!(/\{soc\}([\S\s]+?)\{eoc\}/, '<div class="chorus">\1</div>')
-    html_output.gsub!(/<div>\{start_of_verse\}\s<\/div>([\S\s]+?)<div>\{end_of_verse\}\s<\/div>/, '<div class="verse">\1</div>')
-    html_output.gsub!(/\{sov\}([\S\s]+?)\{eov\}/, '<div class="verse">\1</div>')
-    html_output.gsub!(/<div>\{soc\}\s<\/div>([\S\s]+?)<div>\{eoc\}\s<\/div>/, '<blockquote>\1</blockquote>')
-    html_output.gsub!(/<div>\{start_of_tab\}\s<\/div>([\S\s]+?)<div>\{end_of_tab\}\s<\/div>/, '<div class="tab">\1</div>')
+    html_output.gsub!(/\{soc\}([\S\s]+?)\{eoc\}/, '<blockquote>\1</blockquote>')
+    html_output.gsub!(/\{start_of_tab\}([\S\s]+?)\{end_of_tab\}/, '<p class="tab">\1</p>')
     #substitute_chords(html_output)
+
+    html_output.gsub!(/\n\n/, "\n")
+    html_output.gsub!(/\n/, '<br>')
+
     html_output
   end
 

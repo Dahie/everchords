@@ -25,6 +25,7 @@ gem 'evernote_utils'
 gem "haml-rails"
 gem 'httparty'
 gem 'aasm'
+gem 'html_to_plain_text'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
