@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'
 # Use Puma as the app server
@@ -47,7 +45,6 @@ group :production do
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
   gem 'database_cleaner'
@@ -61,7 +58,6 @@ group :development do
   gem 'web-console'
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'annotate'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
