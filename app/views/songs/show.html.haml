@@ -1,38 +1,30 @@
 .song-container
-  .panel.panel-default.panel-meta
-    .panel-body
-      .pull-right
-        %ul.nav.nav-pills
-          %li
-            %button.btn.btn-info.btn-sm{ type: "button", data: { toggle: "modal", target: ".bs-song-meta-modal" } }
-              %i.fa.fa-info
+  .ui.breadcrumb
+    = link_to root_path, class: 'section' do
+      %i.icon.home
+      Home
+    %i.right.angle.icon.divider
+    .active.section
+      = @song.title
 
-            .modal.fade.bs-song-meta-modal{ tabindex: "-1", role: "dialog", 'aria-labelledby' => "songMetaModalLabel" }
-              .modal-dialog{ role: "document" }
-                .modal-content
-                  .modal-header
-                    %button.close{ type: "button", 'data-dismiss' => "modal", 'aria-label' => "Close" }
-                      %span{ 'aria-hidden' =>"true" } ×
-                    %h4#mySongMetaModalLabel.modal-title Meta
-                  .modal-body
-                    %form.form-horizonal
-                      .form-group
-                        %label{ for: "shareSongUrl" }=t ('.share')
-                        %input#shareSongUrl.form-control{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
-                  - if current_user && @song.user == current_user
-                    .modal-footer
-                      = button_to song_path(@song.guid), method: :put, class: 'btn btn-default btn-sm', role: 'button' do
-                        %i.fa.fa-refresh
-                        Refresh
-      %h4
-        = link_to root_path do
-          %i.fa.fa-home
-          <
-        = @song.title
-      %p
-        = t('.chords')
+  %p
+
+  .ui.form
+    .three.fields
+      .field
+        %label
+          = t('.chords')
         - @contained_chords.each do |chord|
-          %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom', toggle: "popover", trigger: "focus", content: "<div><img src=\"#{chord['chord_diag_mini']}\"></div>" } }
-            %kbd= chord['original_name']
+          %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
+          %kbd= chord['original_name']
+      .field
+        %label Actions
+        - if current_user && @song.user == current_user
+          = button_to song_path(@song.guid), method: :put, class: 'ui basic icon button', role: 'button' do
+            %i.refresh.icon
+      .field
+        %label{ for: "shareSongUrl" }=t ('.share')
+        %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
+
 
   = @chord_lyrics.to_html.html_safe

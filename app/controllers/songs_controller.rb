@@ -3,9 +3,6 @@ class SongsController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def show
-    #@songs = evernote_service.notes('Songbook')
-    update_song if @song.new_record? || @song.updated_at < 3.days.ago
-
     @title = "#{@song.title} - Everchords"
     @chord_lyrics = ChordProParser.new(@song.body)
 

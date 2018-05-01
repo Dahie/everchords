@@ -9,24 +9,10 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-default.sidebar{role: 'navigation', style: 'display: none'}
-      .container-fluid
-        .navbar-header
-          %button{ type: "button", class: "navbar-toggle collapsed", 'data-toggle' => "collapse", 'data-target' => "#bs-example-navbar-collapse-1", 'aria-expanded' => "false" }
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.navbar-brand{ href: root_path } Everchords
-
-        = render 'shared/navigation'
-
-    .container.main
+    .ui.container
       - if notice.present?
         .alert.alert-success= notice
       - if alert.present?
         .alert.alert-danger= alert
-      %div.container
-        = yield
-    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" }
-    %script{ src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity: "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin: "anonymous" }
+      = yield
+

@@ -1,4 +1,6 @@
 - if current_user
-  .list-group
+  .ui.middle.aligned.divided.list
     - songs.each do |song|
-      = link_to song.title, "/songs/#{song.guid}", class: "list-group-item"
+      .item
+        .content
+          = link_to song.title, "/songs/#{song.guid}", class: "header"
