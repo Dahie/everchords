@@ -1,30 +1,27 @@
-.song-container
-  .ui.breadcrumb
-    = link_to root_path, class: 'section' do
-      %i.icon.home
-      Home
-    %i.right.angle.icon.divider
-    .active.section
+.ui.menu
+  .ui.container
+    = link_to root_path, class: 'item header ' do
       = @song.title
+      %i.dropdown.icon
 
-  %p
-
-  .ui.form
-    .three.fields
-      .field
-        %label
-          = t('.chords')
-        - @contained_chords.each do |chord|
-          %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
-          %kbd= chord['original_name']
-      .field
-        %label Actions
+    .ui.simple.dropdown.item
+      More
+      %i.icon.dropdown
+      .menu
+        .item
+          Chords:
+          - @contained_chords.each do |chord|
+            %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
+            %kbd= chord['original_name']
         - if current_user && @song.user == current_user
-          = button_to song_path(@song.guid), method: :put, class: 'ui basic icon button', role: 'button' do
-            %i.refresh.icon
-      .field
-        %label{ for: "shareSongUrl" }=t ('.share')
-        %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
+          .item
+            = link_to song_path(@song.guid), method: :put do
+              %i.refresh.icon
+              Refresh
+          .item
+            .ui.icon.input
+              %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
+              %i.share.link.icon
 
-
+.song-container
   = @chord_lyrics.to_html.html_safe

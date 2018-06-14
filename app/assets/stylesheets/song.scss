@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.song-container {
+  h2.title,
+  .artist,
+  .year {
+    display: none;
+  }
+
+  blockquote {
+    margin: 1em;
+  }
+
+  .text-muted {
+    color: rgba(0,0,0,.4);
+    font-size: 0.8em;
+  }
+
+}
+
+
 @media (min-width: 600px) {
   .song-container {
     column-count: 2;
