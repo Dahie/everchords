@@ -1,0 +1,6 @@
+= form_for @notebook, html: { class: 'form ui' } do |f|
+  .field
+    = f.label :name, 'Name:'
+    = f.select :name, options_for_select(@evernote_notebooks)
+  .field
+    = f.submit("Add Notebook", class: 'ui submit button')

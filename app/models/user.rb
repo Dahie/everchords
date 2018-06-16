@@ -30,9 +30,9 @@ class User < ApplicationRecord
           :omniauthable, omniauth_providers: [:evernote]
 
   has_many :songs
+  has_many :notebooks
 
   def self.from_omniauth(auth)
-    puts auth.inspect
     if (user = find_by_uid(auth.uid))
       user.provider = auth.provider
       user.evernote_token = auth.uid

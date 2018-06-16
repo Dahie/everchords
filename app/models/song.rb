@@ -17,6 +17,7 @@ class Song < ApplicationRecord
   include AASM
 
   belongs_to :user
+  belongs_to :notebook
 
   validates :user, presence: true
   validates :title, presence: true

@@ -11,8 +11,10 @@
   %body
     .ui.container
       - if notice.present?
-        .alert.alert-success= notice
+        .ui.success.message
+          %p= notice
       - if alert.present?
-        .alert.alert-danger= alert
+        .ui.error.message
+          %p= alert
       = yield
 

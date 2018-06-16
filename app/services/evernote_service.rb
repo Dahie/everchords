@@ -14,6 +14,10 @@ class EvernoteService
     enutils.notes(notebook: notebook_name, limit: 50)
   end
 
+  def notebooks
+    enutils.notebooks
+  end
+
   def note(guid)
     enutils.notestore.getNote(token, guid, true, true, false, false)
   end
