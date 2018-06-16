@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: songs
-#
-#  id           :integer          not null, primary key
-#  title        :string
-#  body         :text
-#  user_id      :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  guid         :string
-#  published    :boolean          default(FALSE)
-#  secret_token :string
-#
-
 class Song < ApplicationRecord
   include AASM
 

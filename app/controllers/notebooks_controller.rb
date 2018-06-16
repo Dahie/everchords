@@ -4,7 +4,7 @@ class NotebooksController < ApplicationController
     @title = "Add Notebook - Everchords"
     @notebook = Notebook.new
     notebook_names = current_user.notebooks.map { |book| book.name }
-    @evernote_notebooks = evernote_service.notebooks.map { |book| book.name }.reject { |name| puts(name);name.in?(notebook_names) }
+    @evernote_notebooks = evernote_service.notebooks.map { |book| book.name }.reject { |name| name.in?(notebook_names) }
   end
 
   def create

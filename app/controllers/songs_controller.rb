@@ -23,7 +23,7 @@ class SongsController < ApplicationController
 
   def load_resource
     if current_user
-      @song = Song.find_or_initialize_by(id: params[:id])
+      @song = current_user.songs.find_or_initialize_by(id: params[:id])
     elsif params[:secret_token]
       @song = Song.find_by(id: params[:id], secret_token: params[:secret_token])
     else
