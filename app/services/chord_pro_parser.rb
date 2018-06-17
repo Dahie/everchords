@@ -61,7 +61,7 @@ class ChordProParser
     html_output.gsub!(/\{album:([\S\s]+?)\}/, '<div class="album">\1</div>')
 
 
-    html_output.gsub!(/(#[\s\S]+?$)/, '')
+    html_output.gsub!(/(\s#[\s\S]+?$)/, '')
 
     html_output.gsub!(/\{comment:([\S\s]+?)\}/, '<span class="comment text-muted">\1</span>')
     html_output.gsub!(/\{c:([\S\s]+?)\}/, '<span class="comment text-muted">\1</span>')
