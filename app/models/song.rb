@@ -21,6 +21,6 @@ class Song < ApplicationRecord
   end
 
   def share_url
-    "/songs/#{self.guid}?secret_token=#{self.secret_token}"
+    "/songs/#{self.id}?secret_token=#{self.secret_token}"
   end
 end
