@@ -15,7 +15,7 @@
             %kbd= chord['original_name']
         - if current_user && @song.user == current_user
           .item
-            = link_to song_path(@song.guid), method: :put do
+            = link_to song_path(@song), method: :put do
               %i.refresh.icon
               Refresh
           .item
