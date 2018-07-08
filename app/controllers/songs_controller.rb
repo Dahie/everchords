@@ -6,6 +6,8 @@ class SongsController < ApplicationController
     @title = "#{@song.title} - Everchords"
     @chord_lyrics = ChordProParser.new(@song.body)
 
+    puts @chord_lyrics.inspect
+
     @contained_chords = @chord_lyrics.contained_chords.sort.map do |chord|
       #chord_data = ChordService.new(chord).fetch
       #chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
@@ -16,7 +18,7 @@ class SongsController < ApplicationController
 
   def update
     update_song
-    redirect_to song_path(@song.guid)
+    redirect_to song_path(@song)
   end
 
   private
@@ -32,7 +34,7 @@ class SongsController < ApplicationController
   end
 
   def update_song
-    evernote_note = evernote_service.note(params['id'])
+    evernote_note = evernote_service.note(@song.guid)
     @song.update_from_evernote(evernote_note)
     @song.user = current_user
     @song.save!
