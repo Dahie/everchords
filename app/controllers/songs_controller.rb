@@ -3,7 +3,6 @@ class SongsController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def show
-    @title = "#{@song.title} - Everchords"
     @chord_lyrics = ChordProParser.new(@song.body)
 
     puts @chord_lyrics.inspect

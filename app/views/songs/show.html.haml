@@ -1,3 +1,6 @@
+- content_for :meta do
+  %title= "#{@song.title} - Everchords"
+
 .ui.menu
   .ui.container
     = link_to root_path, class: 'item header ' do
