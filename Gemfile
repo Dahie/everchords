@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby "2.6.2"
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2'
 # Use Puma as the app server
@@ -40,7 +38,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'sqlite3'
   gem 'rspec-rails'
