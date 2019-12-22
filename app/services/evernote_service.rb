@@ -1,5 +1,6 @@
-class EvernoteService
+# frozen_string_literal: true
 
+class EvernoteService
   attr_reader :token
 
   def initialize(token)
@@ -19,7 +20,7 @@ class EvernoteService
   end
 
   def notebook_names
-    notebooks.map { |book| book.name }
+    notebooks.map(&:name)
   end
 
   def note(guid)

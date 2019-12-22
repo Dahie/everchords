@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-          :rememberable, :trackable, :validatable,
-          :omniauthable, omniauth_providers: [:evernote]
+         :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:evernote]
 
   has_many :songs, dependent: :destroy
   has_many :notebooks, dependent: :destroy
@@ -25,7 +27,9 @@ class User < ApplicationRecord
         user.username = auth.info.name
         user.avatar = auth.info.image
         user.evernote_token = auth.credentials.token
-        user.password = Devise.friendly_token[0,20] unless user.encrypted_password?
+        unless user.encrypted_password?
+          user.password = Devise.friendly_token[0, 20]
+        end
       end
     end
   end

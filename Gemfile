@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -14,43 +16,45 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 
 # Use of devise and Omniauth for authentication
+gem 'aasm'
 gem 'devise'
 gem 'devise-i18n'
+gem 'evernote_oauth'
+gem 'evernote_utils'
+gem 'haml-rails'
+gem 'html_to_plain_text'
+gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-evernote'
-gem "evernote_oauth"
-gem 'evernote_utils'
-gem "haml-rails"
-gem 'httparty'
-gem 'aasm'
-gem 'html_to_plain_text'
 
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'semantic-ui-sass'
+gem 'turbolinks', '~> 5'
 
-gem "figaro"
+gem 'figaro'
+gem 'song_pro'
 
 group :production do
-  gem "pg"
+  gem 'pg'
 end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'factory_bot_rails'
   gem 'database_cleaner'
-  gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'sqlite3'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
-  gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -249,8 +251,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   evernote_config = Rails.application.config_for(:evernote).with_indifferent_access
-  config.omniauth :evernote, evernote_config[:consumer_key], evernote_config[:consumer_secret], client_options: { site: evernote_config[:url]}
-
+  config.omniauth :evernote, evernote_config[:consumer_key], evernote_config[:consumer_secret], client_options: { site: evernote_config[:url] }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SongsController < ApplicationController
-  before_action :load_resource, only: [:show, :update]
+  before_action :load_resource, only: %i[show update]
   before_action :authenticate_user!, only: [:update]
 
   def show
@@ -8,11 +10,10 @@ class SongsController < ApplicationController
     puts @chord_lyrics.inspect
 
     @contained_chords = @chord_lyrics.contained_chords.sort.map do |chord|
-      #chord_data = ChordService.new(chord).fetch
-      #chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
-      {'original_name' => chord}
+      # chord_data = ChordService.new(chord).fetch
+      # chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
+      { 'original_name' => chord }
     end
-
   end
 
   def update

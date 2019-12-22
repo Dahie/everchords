@@ -1,5 +1,6 @@
-class NotebooksController < ApplicationController
+# frozen_string_literal: true
 
+class NotebooksController < ApplicationController
   before_action :load_notebook, only: %i[update destroy]
 
   def new
@@ -25,9 +26,9 @@ class NotebooksController < ApplicationController
 
   def destroy
     message = if @notebook.destroy
-      "Notebook #{@notebook.name} succesfully created"
-    else
-      "Notebook #{@notebook.name} could not be delete"
+                "Notebook #{@notebook.name} succesfully created"
+              else
+                "Notebook #{@notebook.name} could not be delete"
     end
     redirect_to root_path, alert: message
   end
@@ -36,7 +37,6 @@ class NotebooksController < ApplicationController
 
   def evernote_notebook_names
     evernote_service
-
   end
 
   def load_notebook

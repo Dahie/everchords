@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Song < ApplicationRecord
   include AASM
 
@@ -11,7 +13,7 @@ class Song < ApplicationRecord
 
   before_validation :set_secret_token
 
-  scope :by_title, ->{ order(:title) }
+  scope :by_title, -> { order(:title) }
 
   def update_from_evernote(evernote_note)
     self.body = evernote_note.content
@@ -23,6 +25,6 @@ class Song < ApplicationRecord
   end
 
   def share_url
-    "/songs/#{self.id}?secret_token=#{self.secret_token}"
+    "/songs/#{id}?secret_token=#{self.secret_token}"
   end
 end

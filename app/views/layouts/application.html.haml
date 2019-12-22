@@ -7,7 +7,7 @@
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Fira+Code|Source+Code+Pro&display=swap', media: 'all'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
   %body
     .ui.container
       - if notice.present?
@@ -17,4 +17,6 @@
         .ui.error.message
           %p= alert
       = yield
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 

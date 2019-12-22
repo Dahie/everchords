@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNotebooksIdToSongs < ActiveRecord::Migration[5.2]
   def change
     add_column :songs, :notebook_id, :integer
