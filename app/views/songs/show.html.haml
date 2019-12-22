@@ -4,11 +4,21 @@
 .ui.menu
   .ui.container
     = link_to root_path, class: 'item header ' do
-      = "#{@song.notebook.name} - #{@song.title}"
-      %i.dropdown.icon
+      Everchord
 
     .ui.simple.dropdown.item
-      More
+      = @song.notebook.name
+      %i.icon.dropdown
+      .menu
+        - if current_user && @song.user == current_user
+          - @song.notebook.songs.by_title.each do |song|
+            .item
+              = link_to song_path(song), method: :put do
+                = song.title
+
+
+    .ui.simple.dropdown.item
+      = @song.title
       %i.icon.dropdown
       .menu
         .item

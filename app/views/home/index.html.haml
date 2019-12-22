@@ -22,7 +22,7 @@
         %thead
           %tr
             %th{colspan: 2}
-              = notebook.name
+              = "#{notebook.name} (#{notebook.songs.count})"
 
               = link_to notebook_path(notebook), method: :put do
                 %i.icon.refresh
