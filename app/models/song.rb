@@ -11,6 +11,8 @@ class Song < ApplicationRecord
 
   before_validation :set_secret_token
 
+  scope :by_title, ->{ order(:title) }
+
   def update_from_evernote(evernote_note)
     self.body = evernote_note.content
     self.title = evernote_note.title

@@ -4,6 +4,7 @@
 .ui.menu
   .ui.container
     = link_to root_path, class: 'item header ' do
+      = @song.notebook.name -
       = @song.title
       %i.dropdown.icon
 
