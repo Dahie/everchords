@@ -18,9 +18,11 @@ class EvernoteService
     enutils.notebooks
   end
 
+  def notebook_names
+    notebooks.map { |book| book.name }
+  end
+
   def note(guid)
     enutils.notestore.getNote(token, guid, true, true, false, false)
   end
-
-
 end

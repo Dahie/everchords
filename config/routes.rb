@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resource :home, controller: :home, only: :index do
   end
   resources :songs, only: [:show, :update]
-  resources :notebooks, only: [:new, :create, :destroy]
+  resources :notebooks, only: [:new, :create, :update, :destroy]
 end
