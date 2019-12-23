@@ -9,15 +9,15 @@
 - if current_user.present?
 
   .ui.top.attached.tabular.menu
-    - current_user.notebooks.each do |notebook|
-      = link_to '#', class: 'item active', data: { tab: notebook.name.underscore } do
+    - current_user.notebooks.each_with_index do |notebook, index|
+      = link_to '#', class: "item #{'active' if index.zero?}", data: { tab: notebook.name.underscore } do
         = notebook.name
     .right.menu
       .item
         = link_to 'Add Notebook', new_notebook_path
 
-  - current_user.notebooks.each do |notebook|
-    .ui.bottom.attached.active.tab.segment{ data: { tab: notebook.name.underscore } }
+  - current_user.notebooks.each_with_index do |notebook, index|
+    .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
       %table.ui.celled.striped.table
         %thead
           %tr
