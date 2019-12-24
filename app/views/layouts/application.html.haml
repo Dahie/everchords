@@ -33,6 +33,7 @@
       - if alert.present?
         .ui.error.message
           %p= alert
+      = render 'shared/navigation'
       = yield
 
     = javascript_include_tag 'application'

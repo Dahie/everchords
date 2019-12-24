@@ -1,0 +1,28 @@
+.ui.top.attached.tabular.menu
+  - current_user.notebooks.each_with_index do |notebook, index|
+    = link_to '#', class: "item #{'active' if index.zero?}", data: { tab: notebook.name.underscore } do
+      = notebook.name
+  .right.menu
+    .item
+      = link_to 'Add Notebook', new_notebook_path
+
+- current_user.notebooks.each_with_index do |notebook, index|
+  .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
+    %table.ui.celled.striped.table
+      %thead
+        %tr
+          %th{colspan: 2}
+            = "#{notebook.name} (#{notebook.songs.count})"
+
+            = link_to notebook_path(notebook), method: :put do
+              %i.icon.refresh
+            = link_to notebook_path(notebook), method: :delete do
+              %i.icon.close
+      %tbody
+        - notebook.songs.by_title.each do |song|
+          %tr
+            %td.collapsing
+              = link_to song_path(song) do
+                = song.title
+            %td.collapsing
+              = song.updated_at

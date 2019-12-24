@@ -1,17 +1,40 @@
-#bs-example-navbar-collapse-1.navbar-collapse.collapse
-  %ul.nav.navbar-nav
-    %li.active>
-      %a{ href: root_path }
-        Home
-        %span.pull-right.hidden-xs.showopacity.fa.fa-home{ style: "font-size:16px;" }
-    - if current_user && @songs
-      %li.dropdown
-        %a.dropdown-toggle{ href: "#", :'data-toggle' => "dropdown" }
-          Songs
-          %span.caret
-          %span.pull-right.hidden-xs.showopacity.fa.fa-music{ style: "font-size:16px;" }
+.ui.menu
+  .ui.container
+    = link_to root_path, class: 'item header ' do
+      = image_tag 'favicons/favicon-32x32.png'
+      - unless @song
+        %span.title Everchords
+
+    - if @song
+      .ui.simple.dropdown.item
+        = @song.notebook.name
+        %i.icon.dropdown
+        .notebooks.menu
+          - if current_user && @song.user == current_user
+            - @song.notebook.songs.by_title.each do |song|
+              .item
+                = link_to song_path(song), method: :put do
+                  = song.title
+
+      .ui.simple.dropdown.item
+        = @song.title
+        %i.icon.dropdown
+        .menu
+          .item
+            Chords:
+            - @contained_chords.each do |chord|
+              %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
+              %kbd= chord['original_name']
+          - if current_user && @song.user == current_user
+            .item
+              = link_to song_path(@song), method: :put do
+                %i.refresh.icon
+                Refresh
+            .item
+              .ui.icon.input
+                %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
+                %i.share.link.icon
     - if current_user.present?
-      %li
+      .ui.simple.item
         = link_to destroy_user_session_path do
           Logout
-          %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-info{ style: "font-size:16px;" }

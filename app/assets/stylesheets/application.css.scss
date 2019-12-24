@@ -36,3 +36,12 @@ kbd {
 .ui.simple.dropdown .notebooks.menu {
   column-count: 2;
 }
+
+.ui.menu .item > img:not(.ui) {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.ui.menu .item .title {
+  margin-left: 1em;
+}
