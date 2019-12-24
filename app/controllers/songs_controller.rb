@@ -33,8 +33,11 @@ class SongsController < ApplicationController
     end
   end
 
+  def evernote_note
+    evernote_service.note(@song.guid)
+  end
+
   def update_song
-    evernote_note = evernote_service.note(@song.guid)
     @song.update_from_evernote(evernote_note)
     @song.user = current_user
     @song.save!
