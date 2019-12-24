@@ -4,7 +4,7 @@
 .ui.menu
   .ui.container
     = link_to root_path, class: 'item header ' do
-      Everchord
+      = image_tag 'favicons/favicon-32x32.png', style: 'height: 1.5em; width: auto;'
 
     .ui.simple.dropdown.item
       = @song.notebook.name
