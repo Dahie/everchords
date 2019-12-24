@@ -9,7 +9,7 @@
     .ui.simple.dropdown.item
       = @song.notebook.name
       %i.icon.dropdown
-      .menu
+      .notebooks.menu
         - if current_user && @song.user == current_user
           - @song.notebook.songs.by_title.each do |song|
             .item
