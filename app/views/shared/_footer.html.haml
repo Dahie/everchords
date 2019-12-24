@@ -1,0 +1,7 @@
+.ui.vertical.footer
+  .ui.center.aligned.container
+    .ui.inverted.section.divider
+    = image_tag 'favicons/favicon-32x32.png', class: 'ui centered mini image'
+    .ui.horizontal.small.divided.link.list
+      = mail_to 'public+everchords@danielsenff.de', 'Contact', class: 'item'
+      = link_to 'Legal/Privacy', imprint_path, class: 'item'

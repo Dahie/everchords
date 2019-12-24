@@ -1,7 +1,8 @@
 - content_for :meta do
   %title Everchords
 
-- if current_user.present?
-  = render 'notebooks/list'
-- else
-  = render 'introduction'
+.ui.text.container
+  - if current_user.present?
+    = render 'notebooks/list'
+  - else
+    = render 'introduction'

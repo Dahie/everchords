@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :songs, only: %i[show update]
   resources :notebooks, only: %i[new create update destroy]
+  get 'imprint' => 'pages#imprint', as: 'imprint'
 end

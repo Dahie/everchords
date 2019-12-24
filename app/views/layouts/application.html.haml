@@ -25,16 +25,19 @@
     %meta{content: asset_path("ms-icon-144x144.png"), name: "msapplication-TileImage" }
     %meta{content: "#ffffff", name: "theme-color" }
 
-  %body
-    .ui.container
+  %body.minimal.basic
+    .ui.menu.main.container
+      = render 'shared/navigation'
+
       - if notice.present?
         .ui.success.message
           %p= notice
       - if alert.present?
         .ui.error.message
           %p= alert
-      = render 'shared/navigation'
-      = yield
+
+    = yield
+    = render 'shared/footer'
 
     = javascript_include_tag 'application'
 

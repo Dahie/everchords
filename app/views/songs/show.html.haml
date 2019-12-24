@@ -1,5 +1,6 @@
 - content_for :meta do
   %title= "#{@song.title} - Everchords"
 
-.song-container
-  = @chord_lyrics.to_html.html_safe
+.ui.main.container
+  .song-container
+    = @chord_lyrics.to_html.html_safe
