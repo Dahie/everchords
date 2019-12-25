@@ -24,6 +24,7 @@ gem 'evernote_utils'
 gem 'haml-rails'
 gem 'html_to_plain_text'
 gem 'httparty'
+gem 'interactor-rails'
 gem 'omniauth'
 gem 'omniauth-evernote'
 

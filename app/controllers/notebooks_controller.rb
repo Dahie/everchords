@@ -11,34 +11,31 @@ class NotebooksController < ApplicationController
 
   def create
     @notebook = notebooks.create(permitted_params)
-    @notebook.update_notes(evernote_notes)
+    UpdateNotebook.call(notebook: @notebook)
 
     redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully created"
   end
 
   def update
-    @notebook.update_notes(evernote_notes)
-
-    redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully updated"
+    if UpdateNotebook.call(notebook: @notebook).success?
+      redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully updated"
+    else
+      redirect_to root_path, alert: "Notebook \"#{@notebook.name}\" not updated"
+    end
   end
 
   def destroy
-    message = if @notebook.destroy
-                "Notebook \"#{@notebook.name}\" succesfully created"
-              else
-                "Notebook \"#{@notebook.name}\" could not be deleted"
+    if @notebook.destroy
+      redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully created"
+    else
+      redirect_to root_path, alert: "Notebook \"#{@notebook.name}\" could not be deleted"
     end
-    redirect_to root_path, alert: message
   end
 
   private
 
   def load_notebook
     @notebook = Notebook.find(params[:id])
-  end
-
-  def evernote_notes
-    evernote_service.notes(@notebook.name)
   end
 
   def notebook_names

@@ -12,7 +12,7 @@ class EvernoteService
   end
 
   def notes(notebook_name)
-    enutils.notes(notebook: notebook_name, limit: 50)
+    enutils.notes(notebook: notebook_name, limit: 100)
   end
 
   def notebooks
