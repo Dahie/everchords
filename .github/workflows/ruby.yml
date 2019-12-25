@@ -19,6 +19,6 @@ jobs:
         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
+        bundle install --jobs 4 --retry 3 --without production
         bundle exec rails db:prepare
         bundle exec rspec
