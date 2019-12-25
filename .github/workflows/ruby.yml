@@ -9,8 +9,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Rubocop checks
-      uses: gimenete/rubocop-action@1.0
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
@@ -19,4 +17,5 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+        bundle exec rails db:prepare
+        bundle exec rspec
