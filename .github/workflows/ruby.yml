@@ -14,9 +14,9 @@ jobs:
       with:
         ruby-version: 2.6.x
     - name: Build and run tests
-        env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+      env:
+        RAILS_ENV: test
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
