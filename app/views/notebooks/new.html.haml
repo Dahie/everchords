@@ -1,9 +1,5 @@
 - content_for :meta do
   %title Add Notebook - Everchords
 
-= form_for @notebook, html: { class: 'form ui' } do |f|
-  .field
-    = f.label :name, 'Name:'
-    = f.select :name, options_for_select(@evernote_notebooks)
-  .field
-    = f.submit("Add Notebook", class: 'ui submit button')
+.ui.text.container
+  = render 'form', notebook: @notebook, evernote_notebooks: @evernote_notebooks

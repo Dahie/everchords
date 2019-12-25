@@ -1,0 +1,16 @@
+.ui.steps
+  .step{ class: "#{'active' if step == 0} #{'disabled' if step > 0}"}
+    %i.sign.in.alternate.icon
+    .content
+      .title Connect
+      .description with your Evernote
+  .step{ class: "#{'active' if step == 1} #{'disabled' if step > 1}"}
+    %i.book.icon
+    .content
+      .title Permit
+      .description access to your song notebooks
+  .step
+    %i.music.icon
+    .content
+      .title Display
+      .description your song lyrics beautifully

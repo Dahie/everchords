@@ -1,24 +1,8 @@
-%div{ style: "margin-left:auto;margin-right:auto;" }
-  .row
-    .col-md-4.text-center
-      .promo
-        %i.fa.fa-pencil-square-o
-      Write songs using
-      %br
-      ChordPro in Evernote
-    .col-md-4.text-center
-      .promo
-        %i.fa.fa-sign-in
-      Sign in using Evernote
-    .col-md-4.text-center
-      .promo
-        %i.fa.fa-music
-      Display Song beautifully
-      %br
-      with Everchords
+%h2 Everchords
 
+= render 'shared/3_steps', step: 0
 
-  %h2= t('devise.sessions.new.sign_in')
-  .text-center
-    = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")),
-    user_evernote_omniauth_authorize_path, class: 'btn btn-primary btn-lg'
+%h3.ui.header Connect with your Evernote
+%p By connecting with your Evernote, we can display your Songpro songs in beautiful formatting.
+= link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")),
+user_evernote_omniauth_authorize_path, class: 'ui huge button primary'

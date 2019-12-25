@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require semantic-ui
-//= require turbolinks
 //= require_tree .
 
 $('.menu .item').tab();
+
+$('.ui.modal.addNotebook')
+  .modal('attach events', '.ui.button.addNotebook', 'show');

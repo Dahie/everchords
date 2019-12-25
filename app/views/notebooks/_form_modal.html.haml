@@ -1,0 +1,13 @@
+.ui.modal.addNotebook
+
+  %i.close.icon
+  .header
+    Add Evernote Notebook
+  .content
+    = form_for notebook, html: { class: 'form ui' } do |f|
+      .field
+        = f.label :name, 'Which Notebook contains your songs?'
+        = f.select :name, options_for_select(evernote_notebooks), class: 'dropdown'
+      .field
+        = f.submit("Add Notebook", class: 'ui submit button')
+

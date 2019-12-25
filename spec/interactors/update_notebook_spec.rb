@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe UpdateNotebook, type: :interactor do
@@ -22,7 +24,7 @@ RSpec.describe UpdateNotebook, type: :interactor do
       it 'creates two new songs' do
         expect do
           call
-        end.to change{ Song.count}.by(2)
+        end.to change { Song.count }.by(2)
       end
     end
 

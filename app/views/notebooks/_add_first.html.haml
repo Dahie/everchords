@@ -1,0 +1,5 @@
+%h3.ui.header Add your song notebook
+%p Have all of your songs collected in one Evernote Notebook and add this notebook here.
+= link_to t('.add_notebook'), '#', class: 'ui huge button primary addNotebook'
+
+= render 'notebooks/form_modal', notebook: @notebook, evernote_notebooks: @evernote_notebooks

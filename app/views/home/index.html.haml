@@ -1,8 +1,12 @@
 - content_for :meta do
-  %title Everchords
+  %title Everchords - Beautiful song lyrics
 
 .ui.text.container
   - if current_user.present?
-    = render 'notebooks/list'
+    - if current_user.notebooks.empty?
+      = render 'shared/3_steps', step: 1
+      = render 'notebooks/add_first'
+    - else
+      = render 'notebooks/list'
   - else
     = render 'introduction'
