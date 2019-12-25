@@ -6,29 +6,34 @@ class NotebooksController < ApplicationController
 
   def new
     @notebook = Notebook.new
-    @evernote_notebooks = evernote_service.notebook_names.reject { |name| name.in?(notebook_names) }
+    @evernote_notebooks = evernote_notebook_collection
   end
 
   def create
     @notebook = notebooks.create(permitted_params)
     UpdateNotebook.call(notebook: @notebook)
 
-    redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully created"
+    redirect_to(root_path,
+                notice: "Notebook \"#{@notebook.name}\" succesfully created")
   end
 
   def update
     if UpdateNotebook.call(notebook: @notebook).success?
-      redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully updated"
+      redirect_to(root_path,
+                  notice: "Notebook \"#{@notebook.name}\" succesfully updated")
     else
-      redirect_to root_path, alert: "Notebook \"#{@notebook.name}\" not updated"
+      redirect_to(root_path,
+                  alert: "Notebook \"#{@notebook.name}\" not updated")
     end
   end
 
   def destroy
     if @notebook.destroy
-      redirect_to root_path, notice: "Notebook \"#{@notebook.name}\" succesfully created"
+      redirect_to(root_path,
+                  notice: "Notebook \"#{@notebook.name}\" succesfully created")
     else
-      redirect_to root_path, alert: "Notebook \"#{@notebook.name}\" could not be deleted"
+      redirect_to(root_path,
+                  alert: "Notebook \"#{@notebook.name}\" could not be deleted")
     end
   end
 
@@ -36,6 +41,10 @@ class NotebooksController < ApplicationController
 
   def load_notebook
     @notebook = Notebook.find(params[:id])
+  end
+
+  def evernote_notebook_collection
+    evernote_service.notebook_names.reject { |name| name.in?(notebook_names) }
   end
 
   def notebook_names

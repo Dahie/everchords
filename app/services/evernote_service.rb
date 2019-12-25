@@ -15,9 +15,7 @@ class EvernoteService
     enutils.notes(notebook: notebook_name, limit: 100)
   end
 
-  def notebooks
-    enutils.notebooks
-  end
+  delegate :notebooks, to: :enutils
 
   def notebook_names
     notebooks.map(&:name)

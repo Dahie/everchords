@@ -36,7 +36,8 @@ describe Song do
     it 'returns correct url' do
       subject.secret_token = secret_token
       subject.id = 42
-      expect(subject.share_url).to eql("/songs/#{id}?secret_token=#{secret_token}")
+      expect(subject.share_url)
+        .to eql("/songs/#{id}?secret_token=#{secret_token}")
     end
   end
 

@@ -2,10 +2,10 @@
 
 class HomeController < ApplicationController
   def index
-    if current_user
-      @notebook = Notebook.new
-      @evernote_notebooks = evernote_notebooks
-    end
+    return unless current_user
+
+    @notebook = Notebook.new
+    @evernote_notebooks = evernote_notebooks
   end
 
   private

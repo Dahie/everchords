@@ -11,26 +11,14 @@ class User < ApplicationRecord
   has_many :notebooks, dependent: :destroy
 
   def self.from_omniauth(auth)
-    if (user = find_by_uid(auth.uid))
-      user.provider = auth.provider
-      user.evernote_token = auth.uid
-      user.username = auth.info.name
-      user.avatar = auth.info.image
-      user.evernote_token = auth.credentials.token
-      user.save
-      user
-    else
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.email = "#{auth.info.name}@exame.com"
-        user.username = auth.info.name
-        user.avatar = auth.info.image
-        user.evernote_token = auth.credentials.token
-        unless user.encrypted_password?
-          user.password = Devise.friendly_token[0, 20]
-        end
-      end
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.update(provider: auth.provider,
+                  uid: auth.uid,
+                  email: "#{auth.info.name}@exame.com",
+                  username: auth.info.name,
+                  avatar: auth.info.image,
+                  evernote_token: auth.credentials.token,
+                  password: Devise.friendly_token[0, 20])
     end
   end
 end
