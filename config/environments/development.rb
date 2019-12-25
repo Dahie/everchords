@@ -27,6 +27,4 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.quiet = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
 end

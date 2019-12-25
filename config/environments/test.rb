@@ -18,6 +18,4 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   config.active_support.deprecation = :stderr
-
-  Rails.application.config.active_record.sqlite3.represent_boolean_as_integer = true
 end
