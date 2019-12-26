@@ -7,7 +7,7 @@ class SongsController < ApplicationController
   def show
     @chord_lyrics = ChordProParser.new(@song.body)
 
-    puts @chord_lyrics.inspect
+    # puts @chord_lyrics.inspect
 
     @contained_chords = @chord_lyrics.contained_chords.sort.map do |chord|
       # chord_data = ChordService.new(chord).fetch
