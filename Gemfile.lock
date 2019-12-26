@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:Dahie/songpro-ruby.git
+  revision: a2fffc8392b9bee663d2aebee8c73155c581d661
+  branch: no-trim-lyrics
+  specs:
+    song_pro (0.1.6)
+      markaby
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -218,7 +226,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.1)
+    rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -272,8 +280,6 @@ GEM
     semantic-ui-sass (2.4.2.0)
       sass (>= 3.2)
     sexp_processor (4.13.0)
-    song_pro (0.1.6)
-      markaby
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -344,7 +350,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.0)
   semantic-ui-sass
-  song_pro
+  song_pro!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

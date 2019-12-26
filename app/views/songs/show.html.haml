@@ -3,4 +3,13 @@
 
 .ui.main.container
   .song-container
-    = @chord_lyrics.to_html.html_safe
+    - @song.song_pro.sections.each do |section|
+      .section
+        %span.comment.text-muted
+          = section.name
+        - section.lines.each do |line|
+          - if line.comment?
+            %p
+              %span.comment.text-muted= line.comment
+          - else
+            = build_line(line)

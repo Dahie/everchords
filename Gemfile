@@ -31,7 +31,7 @@ gem 'semantic-ui-sass'
 gem 'turbolinks', '~> 5'
 
 gem 'figaro'
-gem 'song_pro'
+gem 'song_pro', git: 'git@github.com:Dahie/songpro-ruby.git', branch: 'no-trim-lyrics'
 
 group :production do
   gem 'pg'

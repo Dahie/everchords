@@ -30,4 +30,16 @@ class Song < ApplicationRecord
   def share_url
     "/songs/#{friendly_id}?secret_token=#{self.secret_token}"
   end
+
+  def plain_text
+    plain_text ||= HtmlToPlainText.plain_text(body)
+  end
+
+  def chords
+    plain_text.scan(/\[(\S+?)\]/).flatten.uniq
+  end
+
+  def song_pro
+    @song_pro ||= SongPro.parse(plain_text)
+  end
 end

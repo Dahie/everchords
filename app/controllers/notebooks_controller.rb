@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NotebooksController < ApplicationController
-  before_action :load_notebook, only: %i[update destroy]
+  before_action :load_resource, only: %i[update destroy]
   before_action :authenticate_user!, only: %i[update destroy]
 
   def new
@@ -39,7 +39,7 @@ class NotebooksController < ApplicationController
 
   private
 
-  def load_notebook
+  def load_resource
     @notebook = Notebook.find(params[:id])
   end
 

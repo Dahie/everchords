@@ -1,19 +1,13 @@
 # frozen_string_literal: true
 
+require 'song_pro'
+
 class SongsController < ApplicationController
   before_action :load_resource, only: %i[show update]
   before_action :authenticate_user!, only: [:update]
 
   def show
-    @chord_lyrics = ChordProParser.new(@song.body)
-
-    # puts @chord_lyrics.inspect
-
-    @contained_chords = @chord_lyrics.contained_chords.sort.map do |chord|
-      # chord_data = ChordService.new(chord).fetch
-      # chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
-      { 'original_name' => chord }
-    end
+    @contained_chords = contained_chords
   end
 
   def update
@@ -22,6 +16,14 @@ class SongsController < ApplicationController
   end
 
   private
+
+  def contained_chords
+    @song.chords.map do |chord|
+      #chord_data = ChordService.new(chord).fetch
+      #chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
+      { 'original_name' => chord }
+    end
+  end
 
   def load_resource
     if current_user

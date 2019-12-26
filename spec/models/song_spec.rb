@@ -59,4 +59,42 @@ describe Song do
       end.to change(subject, :body).to(content)
     end
   end
+
+  describe '#plain_text' do
+    let(:body) { "<p>Hello</p>" }
+    let(:song) { build(:song, body: body) }
+    subject(:plain_text) { song.plain_text }
+
+    it { is_expected.to eql 'Hello' }
+  end
+
+  describe '#song_pro' do
+    let(:song) { build(:song) }
+    subject(:song_pro) { song.song_pro }
+
+    it { is_expected.to be_a SongPro::Song }
+  end
+
+  describe '#chords' do
+    let(:song) { build(:song, body: body) }
+    subject(:chords) { song.chords }
+
+    context 'without chords' do
+      let(:body) { "<p>Hello</p>" }
+
+      it { is_expected.to eql [] }
+    end
+
+    context 'with simple chords' do
+      let(:body) { "[C]Hello  [A] [C]" }
+
+      it { is_expected.to eql ['C', 'A'] }
+    end
+
+    context 'with annotated chords' do
+      let(:body) { "[C]Hello  [A] [Riff 1]" }
+
+      it { is_expected.to eql ['C', 'A'] }
+    end
+  end
 end
