@@ -1,7 +1,7 @@
 .ui.top.attached.tabular.menu
   - current_user.notebooks.each_with_index do |notebook, index|
     = link_to '#', class: "item #{'active' if index.zero?}", data: { tab: notebook.name.underscore } do
-      = notebook.name
+      = "#{notebook.name} (#{notebook.songs.count})"
   .right.menu
     .item
       = link_to t('.add_notebook'), '#', class: 'ui button addNotebook'
@@ -13,13 +13,15 @@
     %table.ui.celled.striped.table
       %thead
         %tr
-          %th{colspan: 2}
-            = "#{notebook.name} (#{notebook.songs.count})"
+          %th
+            Title
 
             = link_to notebook_path(notebook), method: :put do
               %i.icon.refresh
             = link_to notebook_path(notebook), method: :delete do
               %i.icon.close
+          %th
+            Date
       %tbody
         - notebook.songs.by_title.each do |song|
           %tr
@@ -27,4 +29,4 @@
               = link_to song_path(song) do
                 = song.title
             %td.collapsing
-              = song.updated_at
+              = song.updated_at.to_date

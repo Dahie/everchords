@@ -1,6 +1,0 @@
-- if current_user
-  .ui.middle.aligned.divided.list
-    - songs.each do |song|
-      .item
-        .content
-          = link_to song.title, "/songs/#{song.guid}", class: "header"
