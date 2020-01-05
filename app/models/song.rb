@@ -3,6 +3,9 @@
 class Song < ApplicationRecord
   include AASM
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   belongs_to :notebook
 
@@ -25,6 +28,6 @@ class Song < ApplicationRecord
   end
 
   def share_url
-    "/songs/#{id}?secret_token=#{self.secret_token}"
+    "/songs/#{friendly_id}?secret_token=#{self.secret_token}"
   end
 end

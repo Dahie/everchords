@@ -30,14 +30,13 @@ describe Song do
   end
 
   describe 'share_url' do
+    subject { create(:song) }
     let(:secret_token) { 'foo' }
-    let(:id) { 42 }
 
     it 'returns correct url' do
       subject.secret_token = secret_token
-      subject.id = 42
       expect(subject.share_url)
-        .to eql("/songs/#{id}?secret_token=#{secret_token}")
+        .to eql("/songs/#{subject.friendly_id}?secret_token=#{secret_token}")
     end
   end
 
