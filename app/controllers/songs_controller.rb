@@ -11,7 +11,9 @@ class SongsController < ApplicationController
   end
 
   def update
-    update_song
+    CreateOrUpdateSong.call(evernote_note: evernote_note,
+                            user: current_user,
+                            notebook: @song.notebook)
     redirect_to song_path(@song)
   end
 
@@ -37,11 +39,5 @@ class SongsController < ApplicationController
 
   def evernote_note
     evernote_service.note(@song.guid)
-  end
-
-  def update_song
-    @song.update_from_evernote(evernote_note)
-    @song.user = current_user
-    @song.save!
   end
 end

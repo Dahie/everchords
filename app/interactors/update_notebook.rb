@@ -21,22 +21,29 @@ class UpdateNotebook
   end
 
   def create_or_update_song!(evernote_note)
-    song = Song.find_or_initialize_by(guid: evernote_note.guid)
-    song.update_from_evernote(evernote_note)
-    song.user = user
-    song.notebook = notebook
-    song.save!
+    CreateOrUpdateSong.call(evernote_note: evernote_note,
+                            user: user,
+                            notebook: notebook)
   end
 
   def destroy_removed_songs
-    Song.where(guid: song_guids_removed_in_evernote).destroy_all
+    songs_to_remove_from_notebook.destroy_all
+  end
+
+  def songs_to_remove_from_notebook
+    Song.where(guid: song_guids_removed_in_evernote)
   end
 
   def song_guids_removed_in_evernote
-    evernote_guids = evernote_notes.map(&:guid)
-    existing_song_guids = notebook.songs.map(&:guid)
-
     existing_song_guids - evernote_guids
+  end
+
+  def evernote_guids
+    evernote_notes.map(&:guid)
+  end
+
+  def existing_song_guids
+    notebook.songs.map(&:guid)
   end
 
   def evernote_notes
