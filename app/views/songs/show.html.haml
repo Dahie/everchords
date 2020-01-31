@@ -7,9 +7,10 @@
       .section
         %span.comment.text-muted
           = section.name
+        %br
         - section.lines.each do |line|
           - if line.comment?
-            %p
-              %span.comment.text-muted= line.comment
+            %span.comment.text-muted= line.comment
           - else
             = build_line(line)
+          %br
