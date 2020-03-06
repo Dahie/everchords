@@ -4,10 +4,11 @@
 .ui.main.container
   .song-container
     - @song.song_pro.sections.each do |section|
-      .section
-        %span.comment.text-muted
-          = section.name
-        %br
+      .section.ui.ignored.message
+        - if section.name
+          %span.comment.text-muted
+            = section.name
+          %br
         - section.lines.each do |line|
           - if line.comment?
             %span.comment.text-muted= line.comment
