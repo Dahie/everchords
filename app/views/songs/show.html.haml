@@ -5,7 +5,7 @@
   .song-container
     - @song.song_pro.sections.each do |section|
       .section.ui.ignored.message
-        - if section.name
+        - if section.name.present?
           %span.comment.text-muted
             = section.name
           %br
