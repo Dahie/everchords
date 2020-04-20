@@ -19,3 +19,5 @@ $('.menu .item').tab();
 
 $('.ui.modal.addNotebook')
   .modal('attach events', '.ui.button.addNotebook', 'show');
+$('.ui.modal.debugInfo')
+  .modal('attach events', '.item .openDebugInfo', 'show');

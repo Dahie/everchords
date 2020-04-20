@@ -30,6 +30,10 @@
               %i.refresh.icon
               Refresh
           .item
+            = link_to '#', class: 'openDebugInfo' do
+              %i.bug.icon
+              Debug
+          .item
             .ui.icon.input
               %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
               %i.share.link.icon
