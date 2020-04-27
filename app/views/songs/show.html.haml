@@ -15,5 +15,5 @@
           - else
             = build_line(line)
           %br
-
-= render 'debug'
+- if current_user.admin?
+  = render 'debug'
