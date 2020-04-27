@@ -5,3 +5,5 @@
     .ui.horizontal.small.divided.link.list
       = mail_to 'public+everchords@danielsenff.de', 'Contact', class: 'item'
       = link_to 'Legal/Privacy', imprint_path, class: 'item'
+      - if can?(:read, :dashboard)
+        = link_to 'Admin', rails_admin_path, class: 'item'

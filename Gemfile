@@ -29,7 +29,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'semantic-ui-sass'
 gem 'turbolinks', '~> 5'
+gem 'rails_admin', '~> 2.0'
 
+gem 'cancancan'
 gem 'figaro'
 gem 'song_pro'
 
