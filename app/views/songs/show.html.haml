@@ -15,5 +15,5 @@
           - else
             = build_line(line)
           %br
-- if current_user.admin?
+- if can?(:read, :dashboard)
   = render 'debug'
