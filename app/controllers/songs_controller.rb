@@ -28,10 +28,10 @@ class SongsController < ApplicationController
   end
 
   def load_resource
-    if current_user
-      @song = current_user.songs.find_or_initialize_by(slug: params[:id])
-    elsif params[:secret_token]
+    if params[:secret_token]
       @song = Song.find_by(slug: params[:id], secret_token: params[:secret_token])
+    elsif current_user
+      @song = current_user.songs.find_by(slug: params[:id])
     else
       raise ActiveRecord::RecordNotFound
     end
