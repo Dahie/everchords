@@ -3,10 +3,16 @@ en:
     providers:
 
   home:
-    index:
+    introduction:
+      headline: Connect with your Evernote
       login_with_evernote: Signup with Evernote
+      text: By connecting with your Evernote, we can display your Songpro songs in beautiful formatting.
   songs:
     show:
       chords: 'Chords:'
-      share: Privat teilen
+      share: Share privately
+    not_found:
+      title: Song not found
+      headline: Song not found
+      text: No song could be found under this address.
 

@@ -1,12 +1,20 @@
-en:
+de:
   omniauth:
     providers:
 
   home:
-    index:
+    introduction:
+      headline: Mit deinem Evernote verbinden
       login_with_evernote: Mit Evernote anmelden
+      text: Indem du dich mit Deinem Evernote-Account anmeldest, kannst du Songpro-formatierte Songs hübsch darstellen lassen..
   songs:
     show:
       chords: 'Akkorde:'
       share: Privat teilen
+    not_found:
+      title: Song nicht gefunden
+      headline: Song nicht gefunden
+      text: Unter dieser Adresse konnte kein Song gefunden werden.
+
+
 

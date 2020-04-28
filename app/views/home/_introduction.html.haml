@@ -2,7 +2,7 @@
 
 = render 'shared/3_steps', step: 0
 
-%h3.ui.header Connect with your Evernote
-%p By connecting with your Evernote, we can display your Songpro songs in beautiful formatting.
+%h3.ui.header= t('.headline')
+%p= t('.text')
 = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")),
 user_evernote_omniauth_authorize_path, class: 'ui huge button primary'

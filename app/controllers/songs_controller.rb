@@ -7,7 +7,7 @@ class SongsController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def show
-    @contained_chords = contained_chords
+    render :not_found unless @song
   end
 
   def update
@@ -19,21 +19,11 @@ class SongsController < ApplicationController
 
   private
 
-  def contained_chords
-    @song.chords.map do |chord|
-      #chord_data = ChordService.new(chord).fetch
-      #chord_data.dig('uc', 'chord', 0).merge!('original_name' => chord)
-      { 'original_name' => chord }
-    end
-  end
-
   def load_resource
     if params[:secret_token]
       @song = Song.find_by(slug: params[:id], secret_token: params[:secret_token])
     elsif current_user
       @song = current_user.songs.find_by(slug: params[:id])
-    else
-      raise ActiveRecord::RecordNotFound
     end
   end
 

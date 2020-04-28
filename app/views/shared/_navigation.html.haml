@@ -9,7 +9,7 @@
       = @song.notebook.name
       %i.icon.dropdown
       .notebooks.menu
-        - if current_user && @song.user == current_user
+        - if @song.user == current_user
           - @song.notebook.songs.by_title.each do |song|
             .item
               = link_to song_path(song), method: :put do
@@ -21,10 +21,10 @@
       .menu
         .item
           Chords:
-          - @contained_chords.each do |chord|
+          - @song.chords.each do |chord|
             %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
-            %kbd= chord['original_name']
-        - if current_user && @song.user == current_user
+            %kbd= chord
+        - if @song.user == current_user
           .item
             = link_to song_path(@song), method: :put do
               %i.refresh.icon
