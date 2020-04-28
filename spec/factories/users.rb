@@ -6,5 +6,6 @@ FactoryBot.define do
     username  { Faker::Name.first_name }
     password  { 'password' }
     password_confirmation { 'password' }
+    provider { 'evernote' }
   end
 end

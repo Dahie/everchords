@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :notebooks, dependent: :destroy
 
   def self.from_omniauth(auth)
-    puts auth.inspect
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid)
+        .first_or_initialize.tap do |user|
       user.update!(provider: auth.provider,
                   uid: auth.uid,
                   email: "#{auth.info.name}@example.com",
