@@ -32,7 +32,7 @@ class Song < ApplicationRecord
   end
 
   def plain_text
-    plain_text ||= HtmlToPlainText.plain_text(body)
+    @plain_text ||= HtmlToPlainText.plain_text(body)
   end
 
   def chords
