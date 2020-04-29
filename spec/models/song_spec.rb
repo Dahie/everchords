@@ -18,6 +18,66 @@ describe Song do
   describe :scopes do
   end
 
+  describe '#may_publish?' do
+    subject(:song) { build(:song, state: state) }
+
+    ['draft', 'unpublished'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_publish?).to be_truthy }
+      end
+    end
+
+    ['restricted', 'published'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_publish?).to be_falsey }
+      end
+    end
+  end
+
+  describe '#may_restrict?' do
+    subject(:song) { build(:song, state: state) }
+
+    ['published', 'unpublished'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_restrict?).to be_truthy }
+      end
+    end
+
+    ['draft', 'restricted'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_restrict?).to be_falsey }
+      end
+    end
+  end
+
+  describe '#may_unpublish?' do
+    subject(:song) { build(:song, state: state) }
+
+    ['published'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_unpublish?).to be_truthy }
+      end
+    end
+
+    ['draft', 'restricted', 'unpublished'].each do |state|
+      context "song is #{state}" do
+        let(:state) { state }
+
+        specify { expect(song.may_unpublish?).to be_falsey }
+      end
+    end
+  end
+
   subject { build(:song) }
 
   describe '#set_secret_token' do
