@@ -7,6 +7,11 @@ en:
       headline: Connect with your Evernote
       login_with_evernote: Signup with Evernote
       text: By connecting with your Evernote, we can display your Songpro songs in beautiful formatting.
+  shared:
+    navigation:
+      help: Help
+      logout: Logout
+      profile: Profile
   songs:
     show:
       chords: 'Chords:'
