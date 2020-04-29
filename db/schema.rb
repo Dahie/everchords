@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_115146) do
+ActiveRecord::Schema.define(version: 2020_04_29_100231) do
 
   create_table "notebooks", force: :cascade do |t|
     t.integer "user_id"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 2020_04_27_115146) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "guid"
-    t.boolean "published", default: false
     t.string "secret_token"
     t.integer "notebook_id"
     t.string "slug"
+    t.string "state", default: "draft"
     t.index ["guid"], name: "index_songs_on_guid"
     t.index ["notebook_id"], name: "index_songs_on_notebook_id"
     t.index ["slug"], name: "index_songs_on_slug", unique: true

@@ -18,6 +18,35 @@ class Song < ApplicationRecord
 
   scope :by_title, -> { order(:title) }
 
+  aasm(column: 'state') do
+    state :draft, initial: true
+    state :published, :unpublished, :restricted
+
+    event :publish do
+      transitions from: [:draft, :unpublished], to: :published
+    end
+
+    event :unpublish do
+      transitions from: :published, to: :unpublished
+    end
+
+    event :restrict do
+      transitions from: [:unpublished, :published], to: :restricted
+    end
+  end
+
+  rails_admin do
+    list do
+      include_fields :title, :user, :notebook
+      field :state, :state
+    end
+
+    show do
+      include_fields :title, :slug, :user, :notebook, :secret_token, :body
+      field :state, :state
+    end
+  end
+
   def update_from_evernote(evernote_note)
     self.body = evernote_note.content
     self.title = evernote_note.title

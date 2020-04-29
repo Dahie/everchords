@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'semantic-ui-sass'
 gem 'turbolinks', '~> 5'
 gem 'rails_admin', '~> 2.0'
+gem 'rails_admin_aasm'
 
 gem 'cancancan'
 gem 'figaro'
