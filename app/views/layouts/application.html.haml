@@ -7,12 +7,7 @@
       = render 'shared/navigation'
 
     .ui.text.container
-      - if notice.present?
-        .ui.success.message
-          %p= notice
-      - if alert.present?
-        .ui.error.message
-          %p= alert
+      = semantic_flash
 
     = yield
     = render 'shared/footer'

@@ -1,8 +1,16 @@
 - content_for :meta do
-  %title Help - Everchords
+  %title About us - Everchords
 
 .ui.text.container
-  %h2.page-headline Help
+  %h2.page-headline About us
+
+  %h3#goal Goal
+  %p
+    Everchords is a solution to a simple problem. Evernote is amazing for
+    writing song lyrics on the road, but it's not good for having them
+    readable while playing. Space and compact formatting are an issue with
+    many solutions displaying song lyrics. Everchord offers an alternative
+    frontend for displaying song lyrics managed in Evernote beautifully.
 
   %h3#workflow Workflow
   %p
@@ -32,7 +40,7 @@
 
   %h3#formatting Formatting
   %p
-    Everchords is using the <a href="songpro.org/">SongPro</a> chord
+    Everchords is using the <a href="https://www.songpro.org/">SongPro</a> chord
     formatting style.
     <br><a href="https://www.chordpro.org/chordpro/ChordPro-Directives.html">ChordPro</a> is very similar, but it's
     directives are not supported.
@@ -50,3 +58,17 @@
   %p
     Publishing songs for which you do not hold copyright or licenses is not
     allowed.
+
+  %h3 Remove songs and Notebooks
+  %p
+    Songbooks you added can be removed. Removing them deletes all included songs.
+
+  %h3 Does Everchords copy private data from the Evernote notebooks?
+  %p
+    Everchords copies the contents of the Notebooks you add to the platform
+    as Songbooks. It does not read notes from any other notebooks. If you
+    want to disallow access to these notebooks, delete them and the
+    corresponding notes will be deleted as well.
+  %p
+    Everchords is Open Source and can be reviewed on
+    = link_to('Github', 'https://github.com/dahie/everchords')

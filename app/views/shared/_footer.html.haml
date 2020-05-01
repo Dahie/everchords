@@ -1,10 +1,18 @@
-.ui.vertical.footer
+.ui.vertical.footer.segment
   .ui.center.aligned.container
     .ui.inverted.section.divider
+
     = image_tag 'favicons/favicon-32x32.png', class: 'ui centered mini image'
     .ui.horizontal.small.divided.link.list
-      = link_to 'Help', help_path, class: 'item'
-      = mail_to 'public+everchords@danielsenff.de', 'Contact', class: 'item'
-      = link_to 'Legal/Privacy', imprint_path, class: 'item'
+      = link_to t('.help'), help_path, class: 'item'
+      = mail_to 'public+everchords@danielsenff.de', t('.contact'), class: 'item'
+      = link_to t('.legal'), imprint_path, class: 'item'
       - if can?(:read, :dashboard)
         = link_to 'Admin', rails_admin_path, class: 'item'
+  .ui.center.aligned.container
+    .ui.inverted.section.divider
+    .ui.horizontal.small.divided.link.list
+      Everchords is a project by
+      = link_to 'Daniel Senff', 'http://www.danielsenff.de'
+      %br
+      = link_to 'Follow on Twitter', 'https://www.twitter.com/dahie'

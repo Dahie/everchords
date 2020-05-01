@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    return unless current_user
+    render(layout: 'minimal') and return unless current_user
 
     @notebook = Notebook.new
     @evernote_notebooks = evernote_notebooks

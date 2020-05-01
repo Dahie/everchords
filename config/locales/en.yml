@@ -6,12 +6,18 @@ en:
     introduction:
       headline: Connect with your Evernote
       login_with_evernote: Signup with Evernote
-      text: By connecting with your Evernote, we can display your Songpro songs in beautiful formatting.
+      text: You start by connecting logging into your Evernote. Everchords needs read access and will only read from the notebooks you allow.
   shared:
+    footer:
+      help: Help
+      legal: Legal/Privacy
+      contact: Contact
     navigation:
+      about_us: About Us
       help: Help
       logout: Logout
       profile: Profile
+      songbooks: Songbooks
   songs:
     show:
       chords: 'Chords:'

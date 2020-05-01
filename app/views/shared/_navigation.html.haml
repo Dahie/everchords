@@ -8,7 +8,7 @@
     .ui.simple.dropdown.item
       = @song.notebook.name
       %i.icon.dropdown
-      .notebooks.menu
+      .menu.notebooks
         - if @song.user == current_user
           - @song.notebook.songs.by_title.each do |song|
             .item
@@ -38,9 +38,13 @@
               %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
               %i.share.link.icon
 
-- if current_user.present?
-  .ui.simple.right.dropdown.item
-    = t('.profile')
-    %i.dropdown.icon
-    .more.menu
-      = link_to t('.logout'), destroy_user_session_path, class: 'item'
+  - if current_user.present?
+    .ui.simple.right.dropdown.item
+      = t('.profile')
+      %i.dropdown.icon
+      .more.menu
+        = link_to t('.songbooks'), root_path, class: 'item'
+        = link_to t('.logout'), destroy_user_session_path, class: 'item'
+  - else
+    = link_to t('.about_us'), help_path, class: 'ui simple item'
+    = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui simple right dropdown item'

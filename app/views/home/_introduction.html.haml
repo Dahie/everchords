@@ -1,8 +1,55 @@
-%h2 Everchords
+.ui.vertical.masthead.center.aligned.segment
+  .ui.container
+    .ui.large.secondary.pointing.menu
+      %a.toc.item
+        = image_tag 'favicons/favicon-32x32.png'
+      = link_to 'Everchords', root_path, class: 'active item'
+      = link_to 'About us', help_path, class: 'item'
 
-= render 'shared/3_steps', step: 0
+      .right.item
+        = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted'
+  .ui.text.container
+    %h1.ui.header
+      Everchords
+    %h2 Share your song lyrics beautifully
+    = link_to  '#getting-started', class: 'ui huge primary button' do
+      Get Started
+      %i.down.arrow.icon
 
-%h3.ui.header= t('.headline')
-%p= t('.text')
-= link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")),
-user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+.ui.vertical.stripe.segment
+  .ui.middle.aligned.stackable.grid.container
+    .row
+      .eight.wide.column
+        %h3 Write with Evernote…
+        %p
+          You write your song lyrics in
+          = link_to('Evernote', 'https://www.evernote.com')
+          \. You have notebooks full
+          of your lyrics and your drafts. It's well managed and practical
+          but hard to read, to play along and to share.
+
+      .six.wide.right.floated.column
+        = image_tag('everchords-tutorial-1.png', class: 'ui large bordered rounded image')
+
+    .row
+      .six.wide.left.floated.column
+        = image_tag('everchords-tutorial-2.png', class: 'ui large bordered rounded image')
+
+      .eight.wide.column
+        %h3 … display and share with Everchords
+        %p
+          With Everchords, you can display your lyrics in a compact, beautiful way.
+          Share your songs online in an easy way for others to read, play along and print.
+
+.ui.vertical.stripe
+  .ui.text.container
+    %h3.ui.header#getting-started Getting started
+    %p= t('.text')
+
+    = render 'shared/3_steps', step: 0
+    %p
+      = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+
+
+
+
