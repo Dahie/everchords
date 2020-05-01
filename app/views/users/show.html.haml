@@ -1,0 +1,11 @@
+- content_for :meta do
+  %title= "#{user.username} Profile - Everchords"
+
+.ui.container
+  %h3 Published Songs
+  - user.songs.published.each do |song|
+    = link_to(song.title, song)
+
+  - if user == current_user
+    %h3 Unpublished songs
+

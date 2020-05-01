@@ -17,6 +17,16 @@ class SongsController < ApplicationController
     redirect_to song_path(@song)
   end
 
+  def publish
+    if @song.publish!
+    else
+    end
+  end
+
+  def unpublish
+
+  end
+
   private
 
   def load_resource
