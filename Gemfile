@@ -27,7 +27,7 @@ gem 'omniauth-evernote'
 
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'semantic-ui-sass'
+gem 'fomantic-ui-sass'
 gem 'turbolinks', '~> 5'
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_aasm'
