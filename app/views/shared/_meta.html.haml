@@ -22,11 +22,26 @@
 
 %meta{ name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" }
 
-%meta{content: "With Everchord you can display and print your song lyrics beautifully. It connects to your Evernote songbooks and makes your song notes look amazing.", name: "description"}
-%meta{content: "songpro, chordpro, lyrics, chords, tabs, guitar, ukulele", name: "keywords"}
+%meta{content: "songpro, chordpro, lyrics, chords, tabs, guitar, ukulele, evernote", name: "keywords"}
 %meta{content: "index, follow", name: "robots"}
 %meta{content: "EN", name: "language"}
 %meta{content: "Daniel Senff", name: "author"}
 %meta{content: "global", name: "distribution"}
+
+%meta{:content => "Everchords - Share your song lyrics beautifully", :name => "title"}/
+%meta{:content => "With Everchords, you can display your lyrics in a compact, beautiful way. Share your songs online in an easy way for others to read, play along and print. ", :name => "description"}/
+/ Open Graph / Facebook
+%meta{:content => "website", :property => "og:type"}/
+%meta{:content => "https://everchords.herokuapp.com/", :property => "og:url"}/
+%meta{:content => "Everchords - Share your song lyrics beautifully", :property => "og:title"}/
+%meta{:content => "With Everchords, you can display your lyrics in a compact, beautiful way. Share your songs online in an easy way for others to read, play along and print. ", :property => "og:description"}/
+%meta{content: image_path("social.jpg"), :property => "og:image"}/
+/ Twitter
+%meta{:content => "summary_large_image", :property => "twitter:card"}/
+%meta{:content => "https://everchords.herokuapp.com/", :property => "twitter:url"}/
+%meta{:content => "Everchords - Share your song lyrics beautifully", :property => "twitter:title"}/
+%meta{:content => "With Everchords, you can display your lyrics in a compact, beautiful way. Share your songs online in an easy way for others to read, play along and print. ", :property => "twitter:description"}/
+%meta{content: image_path("social.jpg"), property: "twitter:image"}/
+
 
 = yield :meta
