@@ -7,6 +7,16 @@ en:
       headline: Connect with your Evernote
       login_with_evernote: Signup with Evernote
       text: You start by connecting logging into your Evernote. Everchords needs read access and will only read from the notebooks you allow.
+
+  notebooks:
+    list:
+      access: Access
+      album: Album
+      date: Date
+      delete: Delete
+      refresh: Refresh
+      title: Title
+
   shared:
     footer:
       help: Help
@@ -21,6 +31,7 @@ en:
   songs:
     show:
       chords: 'Chords:'
+      open_with_evernote: In Evernote öffnen
       share: Share privately
     not_found:
       title: Song not found

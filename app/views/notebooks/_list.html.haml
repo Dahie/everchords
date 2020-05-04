@@ -10,23 +10,40 @@
 
 - current_user.notebooks.each_with_index do |notebook, index|
   .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
-    %table.ui.celled.striped.table
+
+    %table.ui.very.basic.table
       %thead
         %tr
-          %th
-            Title
-
-            = link_to notebook_path(notebook), method: :put do
-              %i.icon.refresh
-            = link_to notebook_path(notebook), method: :delete do
-              %i.icon.close
-          %th
-            Date
+          %th= t('.title')
+          %th= t('.album')
+          %th= t('.access')
+          %th= t('.date')
       %tbody
+        /- notebook.songs.grouped_by_album_title.by_title.each do |album_title, song|
         - notebook.songs.by_title.each do |song|
           %tr
-            %td.collapsing
+            %td
               = link_to song_path(song) do
+                %i.icon.music
                 = song.title
             %td.collapsing
+              = song.album
+            %td.collapsing
+              - if song.published?
+                %i.icon.eye
+              - elsif song.restricted?
+                %i.icon.ban
+              - else
+                %i.icon.eye.slash
+            %td.collapsing
               = song.updated_at.to_date
+      %tfoot.full-width
+        %tr
+          %th{colspan: "4"}
+            = link_to notebook_path(notebook), method: :put, class: 'ui small basic button' do
+              %i.icon.refresh
+              = t('.refresh')
+            = link_to notebook_path(notebook), method: :delete, class: 'ui small basic button' do
+              %i.icon.close
+              = t('.delete')
+

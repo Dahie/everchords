@@ -7,6 +7,16 @@ de:
       headline: Mit deinem Evernote verbinden
       login_with_evernote: Mit Evernote anmelden
       text: Indem du dich mit Deinem Evernote-Account anmeldest, kannst du Songpro-formatierte Songs hübsch darstellen lassen..
+
+  notebooks:
+    list:
+      access: Zugriff
+      album: Album
+      date: Datum
+      delete: Löschen
+      refresh: Aktualisieren
+      title: Titel
+
   shared:
     navigation:
       about_us: Über uns
@@ -17,7 +27,9 @@ de:
   songs:
     show:
       chords: 'Akkorde:'
+      open_with_evernote: In Evernote öffnen
       share: Privat teilen
+
     not_found:
       title: Song nicht gefunden
       headline: Song nicht gefunden

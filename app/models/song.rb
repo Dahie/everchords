@@ -42,7 +42,7 @@ class Song < ApplicationRecord
     end
 
     show do
-      include_fields :title, :slug, :user, :notebook, :secret_token, :body
+      include_fields :title, :slug, :guid, :user, :notebook, :secret_token, :body
       field :state, :state
     end
   end
@@ -56,8 +56,20 @@ class Song < ApplicationRecord
     self.secret_token ||= Devise.friendly_token.first(8)
   end
 
+  def album
+    @album ||= plain_text.scan(/@album=(.+)/).flatten.last
+  end
+
+  def year
+    @year ||= plain_text.scan(/@year=(\d+)/).flatten.last
+  end
+
   def share_url
     "/songs/#{friendly_id}?secret_token=#{self.secret_token}"
+  end
+
+  def evernote_url
+    "https://sandbox.evernote.com/Home.action#n=#{guid}&s=s1&ses=4&sh=2&sds=5&"
   end
 
   def plain_text

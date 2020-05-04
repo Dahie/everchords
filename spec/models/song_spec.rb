@@ -157,4 +157,50 @@ describe Song do
       it { is_expected.to eql ['C', 'A'] }
     end
   end
+
+  describe '#album' do
+    let(:song) { build(:song, body: body) }
+    subject { song.album }
+
+    context 'album in SongPro definition' do
+      let(:body) { "@album=White Flag\n@album=Black Flag" }
+
+      it { is_expected.to eq('Black Flag') }
+    end
+
+    context 'album in ChordPro definition' do
+      let(:body) { "{album:White Flag}" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'album not defined' do
+      let(:body) { "[A] No song [D]here" }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
+  describe '#year' do
+    let(:song) { build(:song, body: body) }
+    subject { song.year }
+
+    context 'year in SongPro definition' do
+      let(:body) { "@year=2007\n@year=2008" }
+
+      it { is_expected.to eq('2008') }
+    end
+
+    context 'year in ChordPro definition' do
+      let(:body) { "{year:2002}" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'year not defined' do
+      let(:body) { "[A] No song [D]here" }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end
