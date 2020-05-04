@@ -48,7 +48,6 @@
       = t('.profile')
       %i.dropdown.icon
       .more.menu
-        = link_to t('.profile'), user_path(current_user), class: 'item'
         = link_to t('.songbooks'), root_path, class: 'item'
         = link_to t('.logout'), destroy_user_session_path, class: 'item'
   - else
