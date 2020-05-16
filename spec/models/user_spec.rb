@@ -22,7 +22,7 @@ describe User do
     let(:auth) do
       double(provider: 'evernote',
              uid: uid,
-             info: double(name: 'RosaPark', image: 'nope'),
+             info: double(name: 'Rosa Park', image: 'nope'),
              credentials: double(token: token))
     end
 
@@ -36,6 +36,11 @@ describe User do
       it 'stores evernote_token' do
         User.from_omniauth(auth)
         expect(User.last.evernote_token).to eq(token)
+      end
+
+      it 'stores faked email address' do
+        User.from_omniauth(auth)
+        expect(User.last.email).to eq('rosa-park@example.com')
       end
     end
 

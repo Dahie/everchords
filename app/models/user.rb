@@ -15,7 +15,7 @@ class User < ApplicationRecord
         .first_or_initialize.tap do |user|
       user.update!(provider: auth.provider,
                   uid: auth.uid,
-                  email: "#{auth.info.name}@example.com",
+                  email: "#{auth.info.name.parameterize}@example.com",
                   username: auth.info.name,
                   avatar: auth.info.image,
                   evernote_token: auth.credentials.token,
