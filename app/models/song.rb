@@ -64,6 +64,10 @@ class Song < ApplicationRecord
     @year ||= plain_text.scan(/@year=(\d+)/).flatten.last
   end
 
+  def capo
+    @capo ||= plain_text.scan(/@capo=(\d+)/).flatten.last
+  end
+
   def share_url
     "/songs/#{friendly_id}?secret_token=#{self.secret_token}"
   end

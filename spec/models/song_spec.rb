@@ -203,4 +203,27 @@ describe Song do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#capo' do
+    let(:song) { build(:song, body: body) }
+    subject { song.capo }
+
+    context 'capo in SongPro definition' do
+      let(:body) { "@capo=2\n@capo=3" }
+
+      it { is_expected.to eq('3') }
+    end
+
+    context 'capo in ChordPro definition' do
+      let(:body) { "{capo:3}" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'capo not defined' do
+      let(:body) { "[A] No song [D]here" }
+
+      it { is_expected.to be_nil }
+    end
+  end
 end
