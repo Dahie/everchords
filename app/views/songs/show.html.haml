@@ -1,7 +1,7 @@
 - content_for :meta do
   %title= "#{@song.title} - Everchords"
 
-.ui.main.container
+.ui.main.fluid.container
   .song-container
     - @song.song_pro.sections.each do |section|
       .section.ui.ignored.message
