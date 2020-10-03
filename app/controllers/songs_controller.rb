@@ -34,6 +34,8 @@ class SongsController < ApplicationController
       @song = Song.find_by(slug: params[:id], secret_token: params[:secret_token])
     elsif current_user
       @song = current_user.songs.find_by(slug: params[:id])
+    else
+      @song = Song.published.find_by(slug: params[:id])
     end
   end
 

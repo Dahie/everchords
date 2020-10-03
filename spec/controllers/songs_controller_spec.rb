@@ -36,6 +36,14 @@ describe SongsController do
           get(:show, params: { id: song.slug })
           expect(response).to render_template(:show)
         end
+
+        context 'song is published' do
+          it 'renders show view' do
+            song.update(state: :published)
+            get(:show, params: { id: song.slug })
+            expect(response).to render_template(:show)
+          end
+        end
       end
 
       context 'song not owned by user' do
