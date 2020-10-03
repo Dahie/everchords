@@ -72,7 +72,9 @@ a {
   padding: 4em;
 }
 
-
+.secondary.pointing.menu .active.item {
+  text-transform: uppercase;
+}
 
 .hidden.menu {
   display: none;
@@ -93,6 +95,7 @@ a {
   margin-bottom: 0em;
   font-size: 4em;
   font-weight: normal;
+  text-transform: uppercase;
 }
 .masthead h2 {
   font-size: 1.7em;
