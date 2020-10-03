@@ -14,7 +14,7 @@ class SongsController < ApplicationController
     CreateOrUpdateSong.call(evernote_note: evernote_note,
                             user: current_user,
                             notebook: @song.notebook)
-    redirect_to song_path(@song)
+    redirect_to user_song_path(@song)
   end
 
   def publish

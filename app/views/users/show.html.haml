@@ -7,12 +7,11 @@
       %a.ui.tiny.image
         %img{:src => "/images/avatar/large/stevie.jpg"}/
       .content
-        %a.header= @user.username
+        .header= @user.username
+        .website
+          /= link_to 'Website', '#'
         .description
           %p
-            Stevie Feliciano is a
-            %a library scientist
-            living in New York City. She likes to spend her time reading, running, and writing.
 
 
   %table.ui.very.basic.table
@@ -22,11 +21,10 @@
         %th= t('.album')
         %th= t('.year')
     %tbody
-      /- notebook.songs.grouped_by_album_title.by_title.each do |album_title, song|
       - @user.songs.published.by_title.each do |song|
         %tr
           %td
-            = link_to song_path(song) do
+            = link_to user_song_path(@user, song) do
               %i.icon.music
               = song.title
           %td.collapsing

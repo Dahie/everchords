@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   get '/oauth_failure' => 'login#oauth_failure'
 
-  resource :home, controller: :home, only: :index do
-  end
+  resource :home, controller: :home, only: :index
   resources :songs, only: %i[show update]
+  get ':username', to: 'users#show', as: :user
+  get ':username/:id', to: 'songs#show', as: :user_song
   resources :notebooks, only: %i[new create update destroy]
-  resources :users, only: %i[show]
+
   get 'imprint' => 'pages#imprint', as: 'imprint'
   get 'help' => 'pages#help', as: 'help'
 end
