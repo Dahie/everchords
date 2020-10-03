@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :songs, dependent: :destroy
   has_many :notebooks, dependent: :destroy
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid)
         .first_or_initialize.tap do |user|
