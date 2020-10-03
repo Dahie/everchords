@@ -12,7 +12,7 @@
         - if @song.user == current_user
           - @song.notebook.songs.by_title.each do |song|
             .item
-              = link_to song_path(song), method: :put do
+              = link_to user_song_path(current_user, song), method: :put do
                 = song.title
 
     .ui.simple.dropdown.item

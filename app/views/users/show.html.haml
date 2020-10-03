@@ -5,7 +5,7 @@
   .ui.items
     .item
       %a.ui.tiny.image
-        %img{:src => "/images/avatar/large/stevie.jpg"}/
+        = user_gravatar @user
       .content
         .header= @user.username
         .website
