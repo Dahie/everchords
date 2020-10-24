@@ -12,8 +12,7 @@
         - if @song.user == current_user
           - @song.notebook.songs.by_title.each do |song|
             .item
-              = link_to user_song_path(current_user, song), method: :put do
-                = song.title
+              = link_to song.title, user_song_path(current_user, song)
 
     .ui.simple.dropdown.item
       = @song.title
@@ -29,7 +28,7 @@
               = @song.capo
           Speed:
           %strong
-            = "#{@song.tempo}bpm" || '-'
+            = @song.tempo && "#{@song.tempo}bpm" || '-'
         .item
           Chords:
           - @song.chords.each do |chord|
