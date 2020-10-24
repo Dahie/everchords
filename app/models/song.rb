@@ -57,15 +57,23 @@ class Song < ApplicationRecord
   end
 
   def album
-    @album ||= plain_text.scan(/@album=(.+)/).flatten.last
+    @album ||= meta_string_value('album')
   end
 
   def year
-    @year ||= plain_text.scan(/@year=(\d+)/).flatten.last
+    @year ||= meta_number_value('year')
+  end
+
+  def tempo
+    @tempo ||= meta_number_value('tempo')
+  end
+
+  def key
+    @key ||= meta_string_value('key')
   end
 
   def capo
-    @capo ||= plain_text.scan(/@capo=(\d+)/).flatten.last
+    @capo ||= meta_number_value('capo')
   end
 
   def share_url
@@ -86,5 +94,15 @@ class Song < ApplicationRecord
 
   def song_pro
     @song_pro ||= SongPro.parse(plain_text)
+  end
+
+  private
+
+  def meta_string_value(key_name)
+    plain_text.scan(/@#{key_name}=(.+)/).flatten.last
+  end
+
+  def meta_number_value(key_name)
+    plain_text.scan(/@#{key_name}=(\d+)/).flatten.last
   end
 end

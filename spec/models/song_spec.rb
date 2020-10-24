@@ -212,6 +212,12 @@ describe Song do
       let(:body) { "@capo=2\n@capo=3" }
 
       it { is_expected.to eq('3') }
+
+      context 'value not a number' do
+        let(:body) { "@capo=two\n@capo=two" }
+
+        it { is_expected.to be_nil }
+      end
     end
 
     context 'capo in ChordPro definition' do
@@ -221,6 +227,35 @@ describe Song do
     end
 
     context 'capo not defined' do
+      let(:body) { "[A] No song [D]here" }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
+  describe '#tempo' do
+    let(:song) { build(:song, body: body) }
+    subject { song.tempo }
+
+    context 'tempo in SongPro definition' do
+      let(:body) { "@tempo=110\n@tempo=112" }
+
+      it { is_expected.to eq('112') }
+
+      context 'value not a number' do
+        let(:body) { "@tempo=two\n@tempo=two" }
+
+        it { is_expected.to be_nil }
+      end
+    end
+
+    context 'tempo in ChordPro definition' do
+      let(:body) { "{tempo:2002}" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'tempo not defined' do
       let(:body) { "[A] No song [D]here" }
 
       it { is_expected.to be_nil }

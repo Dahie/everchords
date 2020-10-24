@@ -20,6 +20,17 @@
       %i.icon.dropdown
       .menu
         .item
+          Key:
+          %strong
+            = @song.key || '-'
+          - if @song.capo
+            Capo:
+            %strong
+              = @song.capo
+          Speed:
+          %strong
+            = "#{@song.tempo}bpm" || '-'
+        .item
           Chords:
           - @song.chords.each do |chord|
             %a{ tabindex: "0", role:"button", data: { html: "true", placement: 'bottom'} }
