@@ -21,7 +21,10 @@
         .item
           Key:
           %strong
-            = @song.key || '-'
+            - if @song.key
+              = link_to @song.key, @song.key_url, target: :blank
+            - else
+              = '-'
           - if @song.capo
             Capo:
             %strong

@@ -84,6 +84,41 @@ class Song < ApplicationRecord
     "https://sandbox.evernote.com/Home.action#n=#{guid}&s=s1&ses=4&sh=2&sds=5&"
   end
 
+  def key_url
+    "http://www.piano-keyboard-guide.com/key-of-#{verbose_key}.html"
+  end
+
+  def verbose_key
+    {
+      'Ab' => 'a-flat',
+      'Am' => 'a-minor',
+      'A#' => 'a-sharp',
+      'A#m' => 'a-sharp-minor',
+      'Bb' => 'b-flat',
+      'Bm' => 'b-minor',
+      'Bbm' => 'b-flat-minor',
+      'Cm' => 'c-minor',
+      'C#' => 'c-sharp',
+      'C#m' => 'c-sharp-minor',
+      'Db' => 'd-flat',
+      'Dbm' => 'd-flat-minor',
+      'Dm' => 'd-minor',
+      'D#' => 'd-sharp',
+      'D#m' => 'd-sharp-minor',
+      'Eb' => 'e-flat',
+      'Ebm' => 'e-flat-minor',
+      'Em' => 'e-minor',
+      'Fm' => 'f-minor',
+      'F#' => 'f-sharp',
+      'F#m' => 'f-sharp-minor',
+      'Gb' => 'g-flat',
+      'Gbm' => 'g-flat-minor',
+      'Gm' => 'g-minor',
+      'G#' => 'g-sharp',
+      'G#m' => 'g-sharp-minor',
+    }.fetch(key).downcase
+  end
+
   def plain_text
     @plain_text ||= HtmlToPlainText.plain_text(body)
   end

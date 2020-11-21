@@ -261,4 +261,75 @@ describe Song do
       it { is_expected.to be_nil }
     end
   end
+
+  describe '#key' do
+    let(:song) { build(:song, body: body) }
+    subject { song.key }
+
+    context 'tempo in SongPro definition' do
+      let(:body) { "@key=Am\n@key=A" }
+
+      it { is_expected.to eq('A') }
+    end
+
+    context 'tempo in ChordPro definition' do
+      let(:body) { "{key:Am}" }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'tempo not defined' do
+      let(:body) { "[A] No song [D]here" }
+
+      it { is_expected.to be_nil }
+    end
+  end
+
+  describe '#verbose_key' do
+    let(:song) { build(:song, body: body) }
+    subject { song.verbose_key }
+
+    {
+      'Ab' => 'a-flat',
+      'Am' => 'a-minor',
+      'A#' => 'a-sharp',
+      'A#m' => 'a-sharp-minor',
+      'Bb' => 'b-flat',
+      'Bm' => 'b-minor',
+      'Bbm' => 'b-flat-minor',
+      'Cm' => 'c-minor',
+      'C#' => 'c-sharp',
+      'C#m' => 'c-sharp-minor',
+      'Db' => 'd-flat',
+      'Dbm' => 'd-flat-minor',
+      'Dm' => 'd-minor',
+      'D#' => 'd-sharp',
+      'D#m' => 'd-sharp-minor',
+      'Eb' => 'e-flat',
+      'Ebm' => 'e-flat-minor',
+      'Em' => 'e-minor',
+      'Fm' => 'f-minor',
+      'F#' => 'f-sharp',
+      'F#m' => 'f-sharp-minor',
+      'Gb' => 'g-flat',
+      'Gbm' => 'g-flat-minor',
+      'Gm' => 'g-minor',
+      'G#' => 'g-sharp',
+      'G#m' => 'g-sharp-minor',
+    }.each do |key, expected_result|
+      context "with key #{key}" do
+        let(:body) { "@key=#{key}" }
+        it { is_expected.to eq expected_result }
+      end
+    end
+  end
+
+  describe '#key_url' do
+    let(:song) { build(:song, body: body) }
+    let(:body) { "@key=Am" }
+    let(:expected_url) { "http://www.piano-keyboard-guide.com/key-of-a-minor.html" }
+
+    it { expect(song.key_url).to eq expected_url }
+  end
+
 end
