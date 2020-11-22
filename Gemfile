@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use of devise and Omniauth for authentication
 gem 'aasm'
+gem 'coltrane'
 gem 'devise'
 gem 'devise-i18n'
 gem 'evernote_oauth'

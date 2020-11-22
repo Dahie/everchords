@@ -7,6 +7,7 @@ class SongsController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def show
+    @fretboards = [Fretboard.create_for_bass, Fretboard.create_for_ukulele]
     render :not_found unless @song
   end
 

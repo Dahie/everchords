@@ -16,6 +16,7 @@
 //= require_tree .
 
 $('.menu .item').tab();
+$('.ui.accordion').accordion({exclusive: false});
 
 $('.ui.modal.addNotebook')
   .modal('attach events', '.ui.button.addNotebook', 'show');

@@ -155,15 +155,24 @@ a {
   }
 }
 
-
-
-
-
 p {
   -webkit-column-break-inside: avoid; /* Chrome, Safari */
   page-break-inside: avoid;           /* Theoretically FF 20+ */
   break-inside: avoid-column;         /* IE 11 */
   display:table;                      /* Actually FF 20+ */
+}
+
+.ui.table tbody > tr > td.striped {
+  background-color: rgba(0,0,50,.02);
+}
+
+.fretboard .fret-0 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.fretboard .markers {
+  font-size: 0.6em;
 }
 
 kbd {

@@ -1,0 +1,24 @@
+.ui.container
+  .ui.styled.fluid.accordion
+    - @fretboards.each do |fretboard|
+      .title
+        %i.dropdown.icon
+        = fretboard.name
+        fretboard
+      .content
+        %table.ui.very.basic.collapsing.celled.table.fretboard
+          %tbody
+            - fretboard.strings.each do |string|
+              %tr
+                - fretboard.fret_count.times do |index|
+                  - note = Coltrane::Theory::Note[string] + index
+                  %td{ class: "fret-#{index} #{'striped' if fretboard.any_dots_at?(index) }" }
+                    = note.pretty_name
+            %tr.markers
+              - fretboard.fret_count.times do |index|
+                %td{ class: "fret-#{index} #{'striped' if fretboard.any_dots_at?(index) }" }
+                  - if fretboard.double_dots_at?(index)
+                    %i.icon.circle
+                    %i.icon.circle
+                  - elsif fretboard.single_dot_at?(index)
+                    %i.icon.circle
