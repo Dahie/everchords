@@ -322,6 +322,11 @@ describe Song do
         it { is_expected.to eq expected_result }
       end
     end
+
+    context 'key is not set' do
+      let(:body) { "" }
+      it { is_expected.to eq nil }
+    end
   end
 
   describe '#key_url' do

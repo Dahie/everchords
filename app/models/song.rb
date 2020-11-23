@@ -116,7 +116,7 @@ class Song < ApplicationRecord
       'Gm' => 'g-minor',
       'G#' => 'g-sharp',
       'G#m' => 'g-sharp-minor',
-    }.fetch(key).downcase
+    }.fetch(key, nil)&.downcase
   end
 
   def plain_text
