@@ -1,5 +1,11 @@
 .ui.container
   .ui.styled.fluid.accordion
+    .title
+      %i.dropdown.icon
+      Chord Diagrams
+    .content
+      - @song.chords.each do |chord|
+        = raw(ChordDiagrams.ukulele_svg(chord))
     - @fretboards.each do |fretboard|
       .title
         %i.dropdown.icon
