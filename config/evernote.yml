@@ -4,6 +4,8 @@ default: &default
   sandbox: true
   url: https://sandbox.evernote.com
 
+# production keys need to be activated at https://dev.evernote.com/support/
+
 development:
   <<: *default
 
