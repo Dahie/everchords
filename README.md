@@ -1,6 +1,6 @@
 # Everchords
 
-[![Build Status](https://travis-ci.org/dahie/everchords.svg?branch=master)](https://travis-ci.org/dahie/everchords) [![Dahie](https://circleci.com/gh/Dahie/everchords.svg?style=svg)](https://circleci.com/gh/Dahie/everchords) [![Maintainability](https://api.codeclimate.com/v1/badges/97a0c493919fed1be834/maintainability)](https://codeclimate.com/github/Dahie/everchords/maintainability)
+[![Everchords](https://circleci.com/gh/Dahie/everchords.svg?style=svg)](https://circleci.com/gh/Dahie/everchords) [![Maintainability](https://api.codeclimate.com/v1/badges/97a0c493919fed1be834/maintainability)](https://codeclimate.com/github/Dahie/everchords/maintainability)
 
 Everchords is a tool that connects to Evernote to fetch notes containing songs written in SongPro syntax. Everchords can display these songs beautifully.
 
