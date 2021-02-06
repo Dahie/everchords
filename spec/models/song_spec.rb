@@ -100,6 +100,24 @@ describe Song do
     end
   end
 
+  describe 'evernote_url' do
+    subject { create(:song) }
+    let(:secret_token) { 'foo' }
+
+    it 'returns sandbox url' do
+      expect(subject.evernote_url)
+        .to eql("https://sandbox.evernote.com/Home.action#n=#{subject.guid}&s=s1&ses=4&sh=2&sds=5&")
+    end
+
+    context 'in production' do
+      it 'returns evernote.com url' do
+        allow(Rails.env).to receive(:production?).and_return true
+        expect(subject.evernote_url)
+          .to eql("https://www.evernote.com/client/web#?b=#{subject.guid}&")
+      end
+    end
+  end
+
   describe '#update_from_evernote' do
     let(:content) { 'foo' }
     let(:title) { 'bar' }

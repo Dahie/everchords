@@ -81,6 +81,7 @@ class Song < ApplicationRecord
   end
 
   def evernote_url
+    return "https://www.evernote.com/client/web#?b=#{guid}&" if Rails.env.production?
     "https://sandbox.evernote.com/Home.action#n=#{guid}&s=s1&ses=4&sh=2&sds=5&"
   end
 
