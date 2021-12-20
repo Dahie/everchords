@@ -18,6 +18,7 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   config.active_support.deprecation = :notify
+  config.active_record.legacy_connection_handling = false
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
