@@ -15,34 +15,29 @@ gem 'uglifier', '>= 1.3.0'
 # Use of devise and Omniauth for authentication
 gem 'aasm'
 gem 'appsignal'
+gem 'cancancan'
 gem 'coltrane'
 gem 'chord_diagrams'
 gem 'devise'
 gem 'devise-i18n'
 gem 'evernote_oauth'
 gem 'evernote_utils'
+gem 'figaro'
 gem 'friendly_id', '~> 5.4'
 gem 'haml-rails'
 gem 'html_to_plain_text'
 gem 'httparty'
 gem 'interactor-rails'
-gem 'omniauth', '~> 1'
-gem 'omniauth-evernote'
-
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'fomantic-ui-sass'
+gem 'omniauth', '~> 1'
+gem 'omniauth-evernote'
+gem 'pg'
 gem 'rails_admin', '3.0.0.beta'
 gem 'rails_admin_aasm'
-gem "sprockets-rails"
-
-gem 'cancancan'
-gem 'figaro'
 gem 'song_pro'
-
-group :production do
-  gem 'pg'
-end
+gem "sprockets-rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -53,7 +48,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
-  gem 'sqlite3'
 end
 
 group :development do
