@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 
 module Everchords
   class Application < Rails::Application
-    config.load_defaults 5.0
+    config.load_defaults 6.1
 
     config.time_zone = 'Berlin'
 

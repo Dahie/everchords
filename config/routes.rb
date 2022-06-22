@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/oauth_failure' => 'login#oauth_failure'
   get 'imprint' => 'pages#imprint', as: 'imprint'
   get 'help' => 'pages#help', as: 'help'
+  get 'health' => 'health#index', as: 'health'
 
   resource :home, controller: :home, only: :index
   resources :songs, only: %i[show update]
