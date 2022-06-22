@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: sqlite3
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
@@ -23,4 +23,8 @@ test:
 production:
   <<: *default
   adapter: postgresql
-  database: everchords_production
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: 5432
