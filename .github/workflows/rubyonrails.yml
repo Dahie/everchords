@@ -19,12 +19,12 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          DATABASE_NAME: rails_test
+          DATABASE_NAME: everchords_test
           DATABASE_USERNAME: rails
           DATABASE_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DATABASE_URL: "postgres://rails:password@localhost:5432/everchords_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
