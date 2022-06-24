@@ -4,8 +4,8 @@ require 'spec_helper'
 
 RSpec.describe UpdateNotebook, type: :interactor do
   let(:user) { create(:user) }
-  let(:notebook) { create(:notebook, user: user) }
-  subject(:call) { described_class.call(notebook: notebook) }
+  let(:notebook) { create(:notebook, user:) }
+  subject(:call) { described_class.call(notebook:) }
   let(:evernote_notes) do
     [
       double(:note1, guid: '1', content: 'foo', title: 'bar'),
@@ -30,7 +30,7 @@ RSpec.describe UpdateNotebook, type: :interactor do
 
     context 'notebook has same songs as evernote' do
       let!(:song1) do
-        create(:song, notebook: notebook, guid: '1', title: 'fu', body: 'ba')
+        create(:song, notebook:, guid: '1', title: 'fu', body: 'ba')
       end
 
       it 'updates song title' do
@@ -47,9 +47,9 @@ RSpec.describe UpdateNotebook, type: :interactor do
     end
 
     context 'notebook has more songs than evernote' do
-      let!(:song1) { create(:song, notebook: notebook, guid: '1') }
-      let!(:song2) { create(:song, notebook: notebook, guid: '2') }
-      let!(:song3) { create(:song, notebook: notebook, guid: '3') }
+      let!(:song1) { create(:song, notebook:, guid: '1') }
+      let!(:song2) { create(:song, notebook:, guid: '2') }
+      let!(:song3) { create(:song, notebook:, guid: '3') }
 
       it 'destroys old song1' do
         expect do

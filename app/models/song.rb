@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class Song < ApplicationRecord
-  include AASM
-
   extend FriendlyId
+  include SongStateMachine
   friendly_id :title, use: :slugged
 
   belongs_to :user
@@ -17,23 +16,6 @@ class Song < ApplicationRecord
   before_validation :set_secret_token
 
   scope :by_title, -> { order(:title) }
-
-  aasm(column: 'state') do
-    state :draft, initial: true
-    state :published, :unpublished, :restricted
-
-    event :publish do
-      transitions from: [:draft, :unpublished], to: :published
-    end
-
-    event :unpublish do
-      transitions from: :published, to: :unpublished
-    end
-
-    event :restrict do
-      transitions from: [:unpublished, :published], to: :restricted
-    end
-  end
 
   rails_admin do
     list do
@@ -82,6 +64,7 @@ class Song < ApplicationRecord
 
   def evernote_url
     return "https://www.evernote.com/client/web#?b=#{guid}&" if Rails.env.production?
+
     "https://sandbox.evernote.com/Home.action#n=#{guid}&s=s1&ses=4&sh=2&sds=5&"
   end
 
@@ -89,35 +72,37 @@ class Song < ApplicationRecord
     "http://www.piano-keyboard-guide.com/key-of-#{verbose_key}.html"
   end
 
+  VERBOSE_KEY_MAPPING = {
+    'Ab' => 'a-flat',
+    'Am' => 'a-minor',
+    'A#' => 'a-sharp',
+    'A#m' => 'a-sharp-minor',
+    'Bb' => 'b-flat',
+    'Bm' => 'b-minor',
+    'Bbm' => 'b-flat-minor',
+    'Cm' => 'c-minor',
+    'C#' => 'c-sharp',
+    'C#m' => 'c-sharp-minor',
+    'Db' => 'd-flat',
+    'Dbm' => 'd-flat-minor',
+    'Dm' => 'd-minor',
+    'D#' => 'd-sharp',
+    'D#m' => 'd-sharp-minor',
+    'Eb' => 'e-flat',
+    'Ebm' => 'e-flat-minor',
+    'Em' => 'e-minor',
+    'Fm' => 'f-minor',
+    'F#' => 'f-sharp',
+    'F#m' => 'f-sharp-minor',
+    'Gb' => 'g-flat',
+    'Gbm' => 'g-flat-minor',
+    'Gm' => 'g-minor',
+    'G#' => 'g-sharp',
+    'G#m' => 'g-sharp-minor'
+  }.freeze
+
   def verbose_key
-    {
-      'Ab' => 'a-flat',
-      'Am' => 'a-minor',
-      'A#' => 'a-sharp',
-      'A#m' => 'a-sharp-minor',
-      'Bb' => 'b-flat',
-      'Bm' => 'b-minor',
-      'Bbm' => 'b-flat-minor',
-      'Cm' => 'c-minor',
-      'C#' => 'c-sharp',
-      'C#m' => 'c-sharp-minor',
-      'Db' => 'd-flat',
-      'Dbm' => 'd-flat-minor',
-      'Dm' => 'd-minor',
-      'D#' => 'd-sharp',
-      'D#m' => 'd-sharp-minor',
-      'Eb' => 'e-flat',
-      'Ebm' => 'e-flat-minor',
-      'Em' => 'e-minor',
-      'Fm' => 'f-minor',
-      'F#' => 'f-sharp',
-      'F#m' => 'f-sharp-minor',
-      'Gb' => 'g-flat',
-      'Gbm' => 'g-flat-minor',
-      'Gm' => 'g-minor',
-      'G#' => 'g-sharp',
-      'G#m' => 'g-sharp-minor',
-    }.fetch(key, key)&.downcase
+    VERBOSE_KEY_MAPPING.fetch(key, key)&.downcase
   end
 
   def plain_text

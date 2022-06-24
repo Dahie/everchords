@@ -21,9 +21,9 @@ describe User do
     let(:token) { 'secret token' }
     let(:auth) do
       double(provider: 'evernote',
-             uid: uid,
+             uid:,
              info: double(name: 'Rosa Park', image: 'nope'),
-             credentials: double(token: token))
+             credentials: double(token:))
     end
 
     context 'user does not exist yet' do
@@ -45,7 +45,7 @@ describe User do
     end
 
     context 'user does already exist' do
-      let!(:user) { create(:user, uid: uid) }
+      let!(:user) { create(:user, uid:) }
 
       it 'creates no new user' do
         expect do

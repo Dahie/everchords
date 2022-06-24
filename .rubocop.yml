@@ -17,3 +17,7 @@ Metrics/BlockLength:
 Layout/LineLength:
   Exclude:
     - "config/initializers/*"
+
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/song_helper.rb'

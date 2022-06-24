@@ -21,9 +21,9 @@ class UpdateNotebook
   end
 
   def create_or_update_song!(evernote_note)
-    CreateOrUpdateSong.call(evernote_note: evernote_note,
-                            user: user,
-                            notebook: notebook)
+    CreateOrUpdateSong.call(evernote_note:,
+                            user:,
+                            notebook:)
   end
 
   def destroy_removed_songs

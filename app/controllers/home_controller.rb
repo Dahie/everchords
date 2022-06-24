@@ -20,7 +20,7 @@ class HomeController < ApplicationController
 
   def evernote_notebooks
     evernote_service.notebook_names.reject { |name| name.in?(notebook_names) }
-  rescue Net::OpenTimeout => e
+  rescue Net::OpenTimeout
     []
   end
 end

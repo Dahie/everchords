@@ -15,14 +15,16 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid)
-        .first_or_initialize.tap do |user|
-      user.update!(provider: auth.provider,
-                  uid: auth.uid,
-                  email: "#{auth.info.name.parameterize}@example.com",
-                  username: auth.info.name,
-                  avatar: auth.info.image,
-                  evernote_token: auth.credentials.token,
-                  password: Devise.friendly_token[0, 20])
-    end
+      .first_or_initialize.tap { |user| update_auth_user!(user, auth) }
+  end
+
+  def self.update_auth_user!(user, auth)
+    user.update!(provider: auth.provider,
+                 uid: auth.uid,
+                 email: "#{auth.info.name.parameterize}@example.com",
+                 username: auth.info.name,
+                 avatar: auth.info.image,
+                 evernote_token: auth.credentials.token,
+                 password: Devise.friendly_token[0, 20])
   end
 end

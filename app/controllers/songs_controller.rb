@@ -12,32 +12,24 @@ class SongsController < ApplicationController
   end
 
   def update
-    CreateOrUpdateSong.call(evernote_note: evernote_note,
+    CreateOrUpdateSong.call(evernote_note:,
                             user: current_user,
                             notebook: @song.notebook)
     redirect_to user_song_path(@song)
   end
 
   def publish
-    if @song.publish!
-    else
-    end
+    @song.publish!
   end
 
-  def unpublish
-
-  end
+  def unpublish; end
 
   private
 
   def load_resource
-    if params[:secret_token]
-      @song = Song.find_by(slug: params[:id], secret_token: params[:secret_token])
-    elsif current_user
-      @song = current_user.songs.find_by(slug: params[:id])
-    else
-      @song = Song.published.find_by(slug: params[:id])
-    end
+    @song = Song.find_by(slug: params[:id], secret_token: params[:secret_token]) ||
+            current_user&.songs&.find_by(slug: params[:id]) ||
+            Song.published.find_by(slug: params[:id])
   end
 
   def evernote_note

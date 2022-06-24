@@ -19,9 +19,9 @@ describe Song do
   end
 
   describe '#may_publish?' do
-    subject(:song) { build(:song, state: state) }
+    subject(:song) { build(:song, state:) }
 
-    ['draft', 'unpublished'].each do |state|
+    %w[draft unpublished].each do |state|
       context "song is #{state}" do
         let(:state) { state }
 
@@ -29,7 +29,7 @@ describe Song do
       end
     end
 
-    ['restricted', 'published'].each do |state|
+    %w[restricted published].each do |state|
       context "song is #{state}" do
         let(:state) { state }
 
@@ -39,9 +39,9 @@ describe Song do
   end
 
   describe '#may_restrict?' do
-    subject(:song) { build(:song, state: state) }
+    subject(:song) { build(:song, state:) }
 
-    ['published', 'unpublished'].each do |state|
+    %w[published unpublished].each do |state|
       context "song is #{state}" do
         let(:state) { state }
 
@@ -49,7 +49,7 @@ describe Song do
       end
     end
 
-    ['draft', 'restricted'].each do |state|
+    %w[draft restricted].each do |state|
       context "song is #{state}" do
         let(:state) { state }
 
@@ -59,7 +59,7 @@ describe Song do
   end
 
   describe '#may_unpublish?' do
-    subject(:song) { build(:song, state: state) }
+    subject(:song) { build(:song, state:) }
 
     ['published'].each do |state|
       context "song is #{state}" do
@@ -69,7 +69,7 @@ describe Song do
       end
     end
 
-    ['draft', 'restricted', 'unpublished'].each do |state|
+    %w[draft restricted unpublished].each do |state|
       context "song is #{state}" do
         let(:state) { state }
 
@@ -122,7 +122,7 @@ describe Song do
     let(:content) { 'foo' }
     let(:title) { 'bar' }
     let(:evernote_note) do
-      double(:evernote_note, content: content, title: title)
+      double(:evernote_note, content:, title:)
     end
 
     it 'updates title' do
@@ -139,8 +139,8 @@ describe Song do
   end
 
   describe '#plain_text' do
-    let(:body) { "<p>Hello</p>" }
-    let(:song) { build(:song, body: body) }
+    let(:body) { '<p>Hello</p>' }
+    let(:song) { build(:song, body:) }
     subject(:plain_text) { song.plain_text }
 
     it { is_expected.to eql 'Hello' }
@@ -154,30 +154,30 @@ describe Song do
   end
 
   describe '#chords' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject(:chords) { song.chords }
 
     context 'without chords' do
-      let(:body) { "<p>Hello</p>" }
+      let(:body) { '<p>Hello</p>' }
 
       it { is_expected.to eql [] }
     end
 
     context 'with simple chords' do
-      let(:body) { "[C]Hello  [A] [C]" }
+      let(:body) { '[C]Hello  [A] [C]' }
 
-      it { is_expected.to eql ['C', 'A'] }
+      it { is_expected.to eql %w[C A] }
     end
 
     context 'with annotated chords' do
-      let(:body) { "[C]Hello  [A] [Riff 1]" }
+      let(:body) { '[C]Hello  [A] [Riff 1]' }
 
-      it { is_expected.to eql ['C', 'A'] }
+      it { is_expected.to eql %w[C A] }
     end
   end
 
   describe '#album' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.album }
 
     context 'album in SongPro definition' do
@@ -187,20 +187,20 @@ describe Song do
     end
 
     context 'album in ChordPro definition' do
-      let(:body) { "{album:White Flag}" }
+      let(:body) { '{album:White Flag}' }
 
       it { is_expected.to be_nil }
     end
 
     context 'album not defined' do
-      let(:body) { "[A] No song [D]here" }
+      let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
     end
   end
 
   describe '#year' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.year }
 
     context 'year in SongPro definition' do
@@ -210,20 +210,20 @@ describe Song do
     end
 
     context 'year in ChordPro definition' do
-      let(:body) { "{year:2002}" }
+      let(:body) { '{year:2002}' }
 
       it { is_expected.to be_nil }
     end
 
     context 'year not defined' do
-      let(:body) { "[A] No song [D]here" }
+      let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
     end
   end
 
   describe '#capo' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.capo }
 
     context 'capo in SongPro definition' do
@@ -239,20 +239,20 @@ describe Song do
     end
 
     context 'capo in ChordPro definition' do
-      let(:body) { "{capo:3}" }
+      let(:body) { '{capo:3}' }
 
       it { is_expected.to be_nil }
     end
 
     context 'capo not defined' do
-      let(:body) { "[A] No song [D]here" }
+      let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
     end
   end
 
   describe '#tempo' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.tempo }
 
     context 'tempo in SongPro definition' do
@@ -268,20 +268,20 @@ describe Song do
     end
 
     context 'tempo in ChordPro definition' do
-      let(:body) { "{tempo:2002}" }
+      let(:body) { '{tempo:2002}' }
 
       it { is_expected.to be_nil }
     end
 
     context 'tempo not defined' do
-      let(:body) { "[A] No song [D]here" }
+      let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
     end
   end
 
   describe '#key' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.key }
 
     context 'tempo in SongPro definition' do
@@ -291,20 +291,20 @@ describe Song do
     end
 
     context 'tempo in ChordPro definition' do
-      let(:body) { "{key:Am}" }
+      let(:body) { '{key:Am}' }
 
       it { is_expected.to be_nil }
     end
 
     context 'tempo not defined' do
-      let(:body) { "[A] No song [D]here" }
+      let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
     end
   end
 
   describe '#verbose_key' do
-    let(:song) { build(:song, body: body) }
+    let(:song) { build(:song, body:) }
     subject { song.verbose_key }
 
     {
@@ -340,7 +340,7 @@ describe Song do
       'G' => 'g',
       'Gm' => 'g-minor',
       'G#' => 'g-sharp',
-      'G#m' => 'g-sharp-minor',
+      'G#m' => 'g-sharp-minor'
     }.each do |key, expected_result|
       context "with key #{key}" do
         let(:body) { "@key=#{key}" }
@@ -349,17 +349,16 @@ describe Song do
     end
 
     context 'key is not set' do
-      let(:body) { "" }
+      let(:body) { '' }
       it { is_expected.to eq nil }
     end
   end
 
   describe '#key_url' do
-    let(:song) { build(:song, body: body) }
-    let(:body) { "@key=Am" }
-    let(:expected_url) { "http://www.piano-keyboard-guide.com/key-of-a-minor.html" }
+    let(:song) { build(:song, body:) }
+    let(:body) { '@key=Am' }
+    let(:expected_url) { 'http://www.piano-keyboard-guide.com/key-of-a-minor.html' }
 
     it { expect(song.key_url).to eq expected_url }
   end
-
 end

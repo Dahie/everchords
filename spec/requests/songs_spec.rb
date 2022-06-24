@@ -8,7 +8,7 @@ describe 'Songs', type: :request do
 
     context 'no song with given slug' do
       it 'renders not_found view' do
-        get("/songs/unknown_slug")
+        get('/songs/unknown_slug')
         expect(response).to render_template(:not_found)
       end
     end

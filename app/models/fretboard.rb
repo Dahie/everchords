@@ -1,5 +1,6 @@
-class Fretboard
+# frozen_string_literal: true
 
+class Fretboard
   attr_reader :name, :strings, :fret_count, :single_dots, :double_dots
 
   def initialize(name, fret_count, strings, single_dots, double_dots)
@@ -39,5 +40,4 @@ class Fretboard
   def double_dots_at?(index)
     index.in?(double_dots)
   end
-
 end
