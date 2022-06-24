@@ -252,9 +252,10 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth (0.5.10)
-    omniauth (1.9.1)
+    omniauth (2.1.0)
       hashie (>= 3.4.6)
-      rack (>= 1.6.2, < 3)
+      rack (>= 2.2.3)
+      rack-protection
     omniauth-evernote (1.2.1)
       evernote-thrift
       multi_json (~> 1.0)
@@ -276,6 +277,8 @@ GEM
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.2.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (7.0.3)
@@ -439,7 +442,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-  omniauth (~> 1)
+  omniauth (~> 2)
   omniauth-evernote
   pg
   puma (~> 5.6)
