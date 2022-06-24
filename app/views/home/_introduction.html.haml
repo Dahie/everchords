@@ -48,7 +48,7 @@
 
     = render 'shared/3_steps', step: 0
     %p
-      = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+      = button_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
 
 
 
