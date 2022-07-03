@@ -7,7 +7,7 @@
       = link_to 'About us', help_path, class: 'item'
 
       .right.item
-        = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted'
+        = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted', method: :post
   .ui.text.container
     %h1.ui.header
       Everchords
