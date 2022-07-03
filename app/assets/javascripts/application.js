@@ -15,7 +15,7 @@
 //= require semantic-ui
 //= require_tree .
 
-$('.menu .item').tab();
+$('.notebooks .item').tab();
 $('.ui.accordion').accordion({exclusive: false});
 
 $('.ui.modal.addNotebook')
