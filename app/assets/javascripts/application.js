@@ -22,3 +22,12 @@ $('.ui.modal.addNotebook')
   .modal('attach events', '.ui.button.addNotebook', 'show');
 $('.ui.modal.debugInfo')
   .modal('attach events', '.item .openDebugInfo', 'show');
+
+$('.ui.search').search({
+  apiSettings: {
+    url: '/search/{query}'
+  },
+  type: 'category',
+  minCharacters : 3
+});
+

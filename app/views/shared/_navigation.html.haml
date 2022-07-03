@@ -1,4 +1,4 @@
-.ui.container
+.ui.container.top.attached
   = link_to root_path, class: 'item header ' do
     = image_tag 'favicons/favicon-32x32.png'
     - unless @song
@@ -60,22 +60,25 @@
               %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
               %i.share.link.icon
 
-
-  .ui.simple.right.item
-    #diacriticsexample.ui.search
-      .ui.icon.input
-        %input.prompt{ type: "text", placeholder: "Search Diacritics..." }
-        %i.search.icon
-      .results
+    
 
   - if current_user.present?
-    .ui.simple.right.dropdown.item
-      = current_user.username
-      %i.dropdown.icon
-      .more.menu
-        = link_to t('.profile'), user_path(current_user), class: 'item'
-        = link_to t('.songbooks'), root_path, class: 'item'
-        = link_to t('.logout'), destroy_user_session_path, class: 'item'
+    .right.menu
+      .ui.simple.right.item.search
+        .ui.transparent.icon.input
+          %input.prompt{ type: "text", placeholder: "Search …" }
+            %i.search.icon
+          
+
+      .ui.simple.right.dropdown.item
+        = current_user.username
+        %i.dropdown.icon
+        .more.menu
+          = link_to t('.profile'), user_path(current_user), class: 'item'
+          = link_to t('.songbooks'), root_path, class: 'item'
+          = link_to t('.logout'), destroy_user_session_path, class: 'item'
+    .results
   - else
     = link_to t('.about_us'), help_path, class: 'ui simple item'
     = button_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui simple right dropdown item'
+

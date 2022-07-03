@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'health' => 'health#index', as: 'health'
 
   resource :home, controller: :home, only: :index
+  get 'search/', to: 'search#show', as: :empty_search
+  get 'search/:query', to: 'search#show', as: :search
   resources :songs, only: %i[show update]
   get ':username', to: 'users#show', as: :user
   get ':username/:id', to: 'songs#show', as: :user_song
