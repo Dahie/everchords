@@ -10,7 +10,7 @@
 
 - current_user.notebooks.each_with_index do |notebook, index|
   .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
-    %table.ui.very.basic.table
+    %table.ui.very.basic.table.unstackable
       %thead
         %tr
           %th= t('.title')

@@ -13,8 +13,7 @@
         .description
           %p
 
-
-  %table.ui.very.basic.table
+  %table.ui.very.basic.table.unstackable
     %thead
       %tr
         %th= t('.title')
@@ -31,7 +30,6 @@
             = song.album
           %td.collapsing
             = song.year
-
 
   - if @user == current_user
     %h3
