@@ -3,6 +3,7 @@
 
 .ui.main.fluid.container
   .song-container
+    %h1= @song.title
     - @song.song_pro.sections.each do |section|
       .section.ui.ignored.message
         - if section.name.present?

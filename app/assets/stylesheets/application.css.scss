@@ -200,3 +200,35 @@ kbd {
 .footer.segment {
   padding: 5em 0em 2em 0em;
 }
+
+
+@media print {
+  .ui.menu.main.container {
+    display: none;
+  }
+
+  .ui.vertical.footer.segment {
+    display: none;
+  }
+
+  .ui.message {
+    font-size: 1,2em;
+  }
+
+  .ui.styled.accordion, .ui.styled.accordion .accordion {
+    box-shadow: none;
+  }
+
+  .ui.accordion .chord-diagrams.title ~ .chord-diagrams.content:not(.active), 
+  .ui.accordion .accordion .chord-diagrams.title ~ .chord-diagrams.content:not(.active) {
+    display: block;
+  }
+
+  .ui.accordion .chord-diagrams.title,
+  .ui.accordion .ukulele.title,
+  .ui.accordion .ukulele.content,
+  .ui.accordion .bass.title,
+  .ui.accordion .bass.title {
+    display: none
+  }
+}

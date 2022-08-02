@@ -1,18 +1,18 @@
 .ui.container
   .ui.styled.fluid.accordion
-    .title
+    .title.chord-diagrams
       %i.dropdown.icon
       Chord Diagrams
-    .content
+    .content.chord-diagrams
       - @song.chords.each do |chord|
         = link_to "https://ukebuddy.com/ukulele-chords/#{chord}-chord", target: :blank do
           = raw(ChordDiagrams.ukulele_svg(chord.sub('maj', 'M')))
     - @fretboards.each do |fretboard|
-      .title
+      .title{class: fretboard.name.parameterize}
         %i.dropdown.icon
         = fretboard.name
         fretboard
-      .content
+      .content{class: fretboard.name.parameterize}
         %table.ui.very.basic.collapsing.celled.table.fretboard
           %tbody
             - fretboard.strings.each do |string|
