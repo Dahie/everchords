@@ -37,6 +37,7 @@ gem 'pg'
 gem 'rails_admin', '3.0.0.beta'
 gem 'rails_admin_aasm'
 gem 'song_pro'
+gem 'sprockets', '3.7.2'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 
