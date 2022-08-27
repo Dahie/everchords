@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
-gem "sassc-rails"
+gem 'sassc-rails'
 
 # Use of devise and Omniauth for authentication
 gem 'aasm'
@@ -38,6 +38,7 @@ gem 'rails_admin', '3.0.0.beta'
 gem 'rails_admin_aasm'
 gem 'song_pro'
 gem 'sprockets-rails'
+gem 'stimulus-rails'
 
 group :development, :test do
   gem 'brakeman'
@@ -60,4 +61,4 @@ group :development do
   gem 'web-console'
 end
 
-gem "importmap-rails", "~> 1.1"
+gem 'importmap-rails', '~> 1.1'

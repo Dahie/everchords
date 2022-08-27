@@ -56,11 +56,10 @@
               %i.icon.external.alternate
               = t('.open_with_evernote')
           .item
-            .ui.icon.input
-              %input#shareSongUrl{ type: "text", value: request.base_url+@song.share_url, readonly: true, autofocus: true }
-              %i.share.link.icon
-
-    
+            .ui.action.input{'data-controller' => 'clipboard' }
+              = text_field_tag(:url, request.base_url + @song.share_url,  id: 'shareSongUrl', readonly: true, autofocus: true, 'data-clipboard-target' => "source" )
+              = button_tag(class: "ui button right icon", 'data-action' => "clipboard#copy") do 
+                %i.copy.icon
 
   - if current_user.present?
     .right.menu
