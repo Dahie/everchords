@@ -3,7 +3,7 @@ import "jquery";
 import "fomantic-ui"
 import "controllers"
 
-$(document).ready(function(){
+jQuery(function() {
   if($('.notebooks .notebook.item').length > 0) {
     $('.notebooks .notebook.item').tab();
   }

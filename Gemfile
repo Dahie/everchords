@@ -40,6 +40,7 @@ gem 'song_pro'
 gem 'sprockets', '3.7.2'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'turbo-rails'
 
 group :development, :test do
   gem 'brakeman'
