@@ -25,10 +25,9 @@ jobs:
       
     env:
       RAILS_ENV: test
-      DB_NAME: everchords_test
-      DB_USERNAME: postgres
-      DB_PASSWORD: password
-      DB_HOST: localhost
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_HOST: localhost
 
     steps:
     - uses: actions/checkout@v2
