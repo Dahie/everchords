@@ -16,4 +16,4 @@ Rails.application.config.assets.paths <<
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += ['controllers/*']
-Rails.application.config.assets.precompile += %w( controllers/index.js )
+Rails.application.config.assets.precompile += %w[controllers/index.js]
