@@ -371,7 +371,7 @@ GEM
       tilt
     song_pro (0.1.10)
       markaby
-    sprockets (3.7.2)
+    sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.4.2)
@@ -450,7 +450,7 @@ DEPENDENCIES
   rubocop-rspec
   sassc-rails
   song_pro
-  sprockets (= 3.7.2)
+  sprockets (= 4.1.1)
   sprockets-rails
   stimulus-rails
   turbo-rails
