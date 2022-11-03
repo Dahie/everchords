@@ -8,7 +8,7 @@ ruby File.read('.ruby-version').strip
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0'
 # Use Puma as the app server
-gem 'puma', '~> 6.0'
+gem 'puma', '~> 5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 
@@ -46,6 +46,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'bundler-audit'
   gem 'byebug', platform: :mri
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'faker'
@@ -55,6 +56,8 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'rubocop-performance'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 group :development do

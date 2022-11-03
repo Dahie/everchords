@@ -8,7 +8,6 @@ class Song < ApplicationRecord
   belongs_to :user
   belongs_to :notebook
 
-  validates :user, presence: true
   validates :title, presence: true
   validates :body, presence: true
   validates :secret_token, presence: true

@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe User do
-  describe :validations do
+  describe 'validations' do
     specify { expect(build(:user)).to be_valid }
 
     specify { expect(build(:user, email: '')).not_to be_valid }
@@ -13,49 +13,46 @@ describe User do
     specify { expect(build(:user, password: nil)).not_to be_valid }
   end
 
-  describe :scopes do
-  end
-
   describe '#from_omniauth' do
     let(:uid) { 4711 }
     let(:token) { 'secret token' }
     let(:auth) do
-      double(provider: 'evernote',
+      double(provider: 'evernote', # rubocop:disable RSpec/VerifiedDoubles
              uid:,
-             info: double(name: 'Rosa Park', image: 'nope'),
-             credentials: double(token:))
+             info: double(name: 'Rosa Park', image: 'nope'), # rubocop:disable RSpec/VerifiedDoubles
+             credentials: double(token:)) # rubocop:disable RSpec/VerifiedDoubles
     end
 
-    context 'user does not exist yet' do
+    context 'without user' do
       it 'creates new user' do
         expect do
-          User.from_omniauth(auth)
-        end.to change(User, :count).by(1)
+          described_class.from_omniauth(auth)
+        end.to change(described_class, :count).by(1)
       end
 
       it 'stores evernote_token' do
-        User.from_omniauth(auth)
-        expect(User.last.evernote_token).to eq(token)
+        described_class.from_omniauth(auth)
+        expect(described_class.last.evernote_token).to eq(token)
       end
 
       it 'stores faked email address' do
-        User.from_omniauth(auth)
-        expect(User.last.email).to eq('rosa-park@example.com')
+        described_class.from_omniauth(auth)
+        expect(described_class.last.email).to eq('rosa-park@example.com')
       end
     end
 
-    context 'user does already exist' do
-      let!(:user) { create(:user, uid:) }
+    context 'with previous user' do
+      before { create(:user, uid:) }
 
       it 'creates no new user' do
         expect do
-          User.from_omniauth(auth)
-        end.to_not change(User, :count)
+          described_class.from_omniauth(auth)
+        end.not_to change(described_class, :count)
       end
 
       it 'stores evernote_token' do
-        User.from_omniauth(auth)
-        expect(User.last.evernote_token).to eq(token)
+        described_class.from_omniauth(auth)
+        expect(described_class.last.evernote_token).to eq(token)
       end
     end
   end

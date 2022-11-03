@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 describe Song do
-  describe :validations do
+  subject(:song) { build(:song) }
+
+  describe 'validations' do
     specify { expect(build(:song)).to be_valid }
 
     specify { expect(build(:song, title: '')).not_to be_valid }
@@ -15,25 +17,22 @@ describe Song do
     specify { expect(build(:song, body: nil)).not_to be_valid }
   end
 
-  describe :scopes do
-  end
-
   describe '#may_publish?' do
     subject(:song) { build(:song, state:) }
 
     %w[draft unpublished].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_publish?).to be_truthy }
+        specify { expect(song).to be_may_publish }
       end
     end
 
     %w[restricted published].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_publish?).to be_falsey }
+        specify { expect(song).not_to be_may_publish }
       end
     end
   end
@@ -42,18 +41,18 @@ describe Song do
     subject(:song) { build(:song, state:) }
 
     %w[published unpublished].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_restrict?).to be_truthy }
+        specify { expect(song).to be_may_restrict }
       end
     end
 
     %w[draft restricted].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_restrict?).to be_falsey }
+        specify { expect(song).not_to be_may_restrict }
       end
     end
   end
@@ -62,58 +61,54 @@ describe Song do
     subject(:song) { build(:song, state:) }
 
     ['published'].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_unpublish?).to be_truthy }
+        specify { expect(song).to be_may_unpublish }
       end
     end
 
     %w[draft restricted unpublished].each do |state|
-      context "song is #{state}" do
+      context "with song in #{state}" do
         let(:state) { state }
 
-        specify { expect(song.may_unpublish?).to be_falsey }
+        specify { expect(song).not_to be_may_unpublish }
       end
     end
   end
 
-  subject { build(:song) }
-
   describe '#set_secret_token' do
     it 'updates token' do
-      subject.secret_token = nil
+      song.secret_token = nil
       expect do
-        subject.set_secret_token
-      end.to change(subject, :secret_token).from(nil)
+        song.set_secret_token
+      end.to change(song, :secret_token).from(nil)
     end
   end
 
   describe 'share_url' do
-    subject { create(:song) }
     let(:secret_token) { 'foo' }
 
     it 'returns correct url' do
-      subject.secret_token = secret_token
-      expect(subject.share_url)
-        .to eql("/songs/#{subject.friendly_id}?secret_token=#{secret_token}")
+      song.secret_token = secret_token
+      expect(song.share_url)
+        .to eql("/songs/#{song.friendly_id}?secret_token=#{secret_token}")
     end
   end
 
   describe 'evernote_url' do
-    subject { create(:song) }
     let(:secret_token) { 'foo' }
 
     it 'returns sandbox url' do
-      expect(subject.evernote_url)
-        .to eql("https://sandbox.evernote.com/Home.action#n=#{subject.guid}&s=s1&ses=4&sh=2&sds=5&")
+      expect(song.evernote_url)
+        .to eql("https://sandbox.evernote.com/Home.action#n=#{song.guid}&s=s1&ses=4&sh=2&sds=5&")
     end
 
-    context 'in production' do
+    context 'with environment production production' do
       it 'returns evernote.com url' do
         allow(Rails.env).to receive(:production?).and_return true
-        expect(subject.evernote_url)
-          .to eql("https://www.evernote.com/client/web#?b=#{subject.guid}&")
+        expect(song.evernote_url)
+          .to eql("https://www.evernote.com/client/web#?b=#{song.guid}&")
       end
     end
   end
@@ -121,41 +116,42 @@ describe Song do
   describe '#update_from_evernote' do
     let(:content) { 'foo' }
     let(:title) { 'bar' }
-    let(:evernote_note) do
-      double(:evernote_note, content:, title:)
-    end
+    let(:evernote_note) { double(:evernote_note, content:, title:) }  # rubocop:disable RSpec/VerifiedDoubles
 
     it 'updates title' do
       expect do
-        subject.update_from_evernote(evernote_note)
-      end.to change(subject, :title).to(title)
+        song.update_from_evernote(evernote_note)
+      end.to change(song, :title).to(title)
     end
 
     it 'updates body' do
       expect do
-        subject.update_from_evernote(evernote_note)
-      end.to change(subject, :body).to(content)
+        song.update_from_evernote(evernote_note)
+      end.to change(song, :body).to(content)
     end
   end
 
   describe '#plain_text' do
+    subject(:plain_text) { song.plain_text }
+
     let(:body) { '<p>Hello</p>' }
     let(:song) { build(:song, body:) }
-    subject(:plain_text) { song.plain_text }
 
     it { is_expected.to eql 'Hello' }
   end
 
   describe '#song_pro' do
-    let(:song) { build(:song) }
     subject(:song_pro) { song.song_pro }
+
+    let(:song) { build(:song) }
 
     it { is_expected.to be_a SongPro::Song }
   end
 
   describe '#chords' do
-    let(:song) { build(:song, body:) }
     subject(:chords) { song.chords }
+
+    let(:song) { build(:song, body:) }
 
     context 'without chords' do
       let(:body) { '<p>Hello</p>' }
@@ -177,22 +173,23 @@ describe Song do
   end
 
   describe '#album' do
-    let(:song) { build(:song, body:) }
     subject { song.album }
 
-    context 'album in SongPro definition' do
+    let(:song) { build(:song, body:) }
+
+    context 'with album in SongPro definition' do
       let(:body) { "@album=White Flag\n@album=Black Flag" }
 
       it { is_expected.to eq('Black Flag') }
     end
 
-    context 'album in ChordPro definition' do
+    context 'with album in ChordPro definition' do
       let(:body) { '{album:White Flag}' }
 
       it { is_expected.to be_nil }
     end
 
-    context 'album not defined' do
+    context 'without album' do
       let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
@@ -200,22 +197,23 @@ describe Song do
   end
 
   describe '#year' do
-    let(:song) { build(:song, body:) }
     subject { song.year }
 
-    context 'year in SongPro definition' do
+    let(:song) { build(:song, body:) }
+
+    context 'with year in SongPro definition' do
       let(:body) { "@year=2007\n@year=2008" }
 
       it { is_expected.to eq('2008') }
     end
 
-    context 'year in ChordPro definition' do
+    context 'with year in ChordPro definition' do
       let(:body) { '{year:2002}' }
 
       it { is_expected.to be_nil }
     end
 
-    context 'year not defined' do
+    context 'without defined year' do
       let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
@@ -223,28 +221,29 @@ describe Song do
   end
 
   describe '#capo' do
-    let(:song) { build(:song, body:) }
     subject { song.capo }
 
-    context 'capo in SongPro definition' do
+    let(:song) { build(:song, body:) }
+
+    context 'with capo=2 in SongPro definition' do
       let(:body) { "@capo=2\n@capo=3" }
 
       it { is_expected.to eq('3') }
-
-      context 'value not a number' do
-        let(:body) { "@capo=two\n@capo=two" }
-
-        it { is_expected.to be_nil }
-      end
     end
 
-    context 'capo in ChordPro definition' do
+    context 'with capo=two in SongPro definition' do
+      let(:body) { "@capo=two\n@capo=3" }
+
+      it { is_expected.to eq('3') }
+    end
+
+    context 'with capo in ChordPro definition' do
       let(:body) { '{capo:3}' }
 
       it { is_expected.to be_nil }
     end
 
-    context 'capo not defined' do
+    context 'without defined capo' do
       let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
@@ -252,28 +251,29 @@ describe Song do
   end
 
   describe '#tempo' do
-    let(:song) { build(:song, body:) }
     subject { song.tempo }
 
-    context 'tempo in SongPro definition' do
+    let(:song) { build(:song, body:) }
+
+    context 'when tempo=110 in SongPro definition' do
       let(:body) { "@tempo=110\n@tempo=112" }
 
       it { is_expected.to eq('112') }
-
-      context 'value not a number' do
-        let(:body) { "@tempo=two\n@tempo=two" }
-
-        it { is_expected.to be_nil }
-      end
     end
 
-    context 'tempo in ChordPro definition' do
+    context 'when tempo=two in SongPro definition' do
+      let(:body) { "@tempo=two\n@tempo=112" }
+
+      it { is_expected.to eq('112') }
+    end
+
+    context 'with tempo in ChordPro definition' do
       let(:body) { '{tempo:2002}' }
 
       it { is_expected.to be_nil }
     end
 
-    context 'tempo not defined' do
+    context 'without defined tempo' do
       let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
@@ -281,22 +281,23 @@ describe Song do
   end
 
   describe '#key' do
-    let(:song) { build(:song, body:) }
     subject { song.key }
 
-    context 'tempo in SongPro definition' do
+    let(:song) { build(:song, body:) }
+
+    context 'with key in SongPro definition' do
       let(:body) { "@key=Am\n@key=A" }
 
       it { is_expected.to eq('A') }
     end
 
-    context 'tempo in ChordPro definition' do
+    context 'with key in ChordPro definition' do
       let(:body) { '{key:Am}' }
 
       it { is_expected.to be_nil }
     end
 
-    context 'tempo not defined' do
+    context 'without defined key' do
       let(:body) { '[A] No song [D]here' }
 
       it { is_expected.to be_nil }
@@ -304,8 +305,9 @@ describe Song do
   end
 
   describe '#verbose_key' do
-    let(:song) { build(:song, body:) }
     subject { song.verbose_key }
+
+    let(:song) { build(:song, body:) }
 
     {
       'Ab' => 'a-flat',
@@ -344,13 +346,15 @@ describe Song do
     }.each do |key, expected_result|
       context "with key #{key}" do
         let(:body) { "@key=#{key}" }
+
         it { is_expected.to eq expected_result }
       end
     end
 
-    context 'key is not set' do
+    context 'without set key' do
       let(:body) { '' }
-      it { is_expected.to eq nil }
+
+      it { is_expected.to be_nil }
     end
   end
 
