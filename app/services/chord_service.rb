@@ -37,6 +37,6 @@ class ChordService
   private
 
   def options
-    { query: { ak: ENV['UKULELE_CHORDS_TOKEN'], r: root, typ: type } }
+    { query: { ak: ENV.fetch('UKULELE_CHORDS_TOKEN', nil), r: root, typ: type } }
   end
 end

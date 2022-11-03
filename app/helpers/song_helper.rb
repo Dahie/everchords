@@ -8,7 +8,7 @@ module SongHelper
         html += content_tag(:kbd, part.chord) if part.chord.present?
         html += part.lyric
         html
-      end.join.html_safe
+      end.join.html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 end

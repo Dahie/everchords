@@ -2,9 +2,11 @@
 
 class AddEvernoteToUsers < ActiveRecord::Migration[5.0]
   def change
-    add_column :users, :provider, :string
-    add_column :users, :username, :string
-    add_column :users, :avatar, :string
+    change_table :songs, bulk: true do |t|
+      t.string :provider
+      t.string :username
+      t.string :avatar
+    end
     rename_column :users, :uuid, :uid
   end
 end

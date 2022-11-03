@@ -2,7 +2,9 @@
 
 class AddVisibilityToSongs < ActiveRecord::Migration[5.0]
   def change
-    add_column :songs, :published, :boolean, default: false
-    add_column :songs, :secret_token, :string
+    change_table :songs, bulk: true do |t|
+      t.boolean :published, default: false
+      t.string :secret_token
+    end
   end
 end
