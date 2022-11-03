@@ -361,6 +361,8 @@ GEM
     rubocop-rspec (2.11.1)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -448,7 +450,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
-  sassc-rails
+  sass-rails (>= 6)
   song_pro
   sprockets (= 4.1.1)
   sprockets-rails

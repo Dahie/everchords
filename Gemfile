@@ -10,7 +10,7 @@ gem 'rails', '~> 7.0'
 # Use Puma as the app server
 gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
-gem 'sassc-rails'
+gem 'sass-rails', '>= 6'
 
 # Use of devise and Omniauth for authentication
 gem 'aasm'
