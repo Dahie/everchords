@@ -36,4 +36,21 @@
       Unpublished songs
       .ui.left.pointing.label
         Only visible to you
+    %table.ui.very.basic.table.unstackable
+      %thead
+        %tr
+          %th= t('.title')
+          %th= t('.album')
+          %th= t('.year')
+      %tbody
+        - @user.songs.where.not(state: 'published').by_title.each do |song|
+          %tr
+            %td
+              = link_to user_song_path(@user, song) do
+                %i.icon.music
+                = song.title
+            %td.collapsing
+              = song.album
+            %td.collapsing
+              = song.year
 
