@@ -2,8 +2,11 @@
 import "jquery";
 import "fomantic-ui"
 import "controllers"
+import {Turbo} from "@hotwired/turbo-rails"
 
-jQuery(function() {
+
+
+const initFomantic = function() {
   if($('.notebooks .notebook.item').length > 0) {
     $('.notebooks .notebook.item').tab();
   }
@@ -24,4 +27,7 @@ jQuery(function() {
     type: 'category',
     minCharacters : 3
   });  
-});
+}
+
+document.addEventListener("turbo:load", initFomantic);
+document.addEventListener("turbo:frame-load", initFomantic);

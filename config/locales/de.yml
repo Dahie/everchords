@@ -9,13 +9,15 @@ de:
       text: Indem du dich mit Deinem Evernote-Account anmeldest, kannst du Songpro-formatierte Songs hübsch darstellen lassen..
 
   notebooks:
-    list:
+    notebook:
       access: Zugriff
       album: Album
       date: Datum
       delete: Löschen
       refresh: Aktualisieren
       title: Titel
+    list:
+      add_notebook: Notebook hinzufügen      
 
   shared:
     navigation:

@@ -9,13 +9,15 @@ en:
       text: You start by connecting logging into your Evernote. Everchords needs read access and will only read from the notebooks you allow.
 
   notebooks:
-    list:
+    notebook:
+      delete: Delete
+      refresh: Refresh
       access: Access
       album: Album
       date: Date
-      delete: Delete
-      refresh: Refresh
       title: Title
+    list:
+      add_notebook: Add Notebook
 
   shared:
     footer:

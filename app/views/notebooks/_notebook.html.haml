@@ -1,0 +1,35 @@
+%table.ui.very.basic.table.unstackable
+  %thead
+    %tr
+      %th= t('.title')
+      %th= t('.album')
+      %th= t('.access')
+      %th= t('.date')
+  %tbody
+    - notebook.songs.by_title.each do |song|
+      %tr
+        %td
+          = link_to user_song_path(song.user, song) do
+            %i.icon.music
+            = song.title
+        %td.collapsing
+          = song.album
+        %td.collapsing
+          - if song.published?
+            %i.icon.eye
+          - elsif song.restricted?
+            %i.icon.ban
+          - else
+            %i.icon.eye.slash
+        %td.collapsing
+          = song.updated_at.to_date
+  %tfoot.full-width
+    %tr
+      %th{colspan: "4"}
+        = link_to notebook_path(notebook), 'data-turbo-method' => :put, class: 'ui small basic button' do
+          %i.icon.refresh
+          = t('.refresh')
+        = link_to notebook_path(notebook), 'data-turbo-method' => :delete, class: 'ui small basic button' do
+          %i.icon.close
+          = t('.delete')
+

@@ -1,48 +1,15 @@
-.ui.top.attached.tabular.menu.notebooks
+= turbo_frame_tag 'notebooks' do
+  .ui.top.attached.tabular.menu.notebooks
+    - current_user.notebooks.each_with_index do |notebook, index|
+      = link_to '#', class: "notebook item #{'active' if index.zero?}", data: { tab: notebook.name.underscore } do
+        = "#{notebook.name} (#{notebook.songs.count})"
+    .right.menu
+      .item
+        = link_to t('.add_notebook'), '#', class: 'ui button addNotebook'
+
   - current_user.notebooks.each_with_index do |notebook, index|
-    = link_to '#', class: "notebook item #{'active' if index.zero?}", data: { tab: notebook.name.underscore } do
-      = "#{notebook.name} (#{notebook.songs.count})"
-  .right.menu
-    .item
-      = link_to t('.add_notebook'), '#', class: 'ui button addNotebook'
+    .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
+      = turbo_frame_tag notebook do
+        = render 'notebooks/notebook', notebook: notebook
 
 = render 'notebooks/form_modal', notebook: @notebook, evernote_notebooks: @evernote_notebooks
-
-- current_user.notebooks.each_with_index do |notebook, index|
-  .ui.bottom.attached.tab.segment{ data: { tab: notebook.name.underscore }, class: "#{'active' if index.zero?}" }
-    %table.ui.very.basic.table.unstackable
-      %thead
-        %tr
-          %th= t('.title')
-          %th= t('.album')
-          %th= t('.access')
-          %th= t('.date')
-      %tbody
-        /- notebook.songs.grouped_by_album_title.by_title.each do |album_title, song|
-        - notebook.songs.by_title.each do |song|
-          %tr
-            %td
-              = link_to user_song_path(current_user, song) do
-                %i.icon.music
-                = song.title
-            %td.collapsing
-              = song.album
-            %td.collapsing
-              - if song.published?
-                %i.icon.eye
-              - elsif song.restricted?
-                %i.icon.ban
-              - else
-                %i.icon.eye.slash
-            %td.collapsing
-              = song.updated_at.to_date
-      %tfoot.full-width
-        %tr
-          %th{colspan: "4"}
-            = link_to notebook_path(notebook), method: :put, class: 'ui small basic button' do
-              %i.icon.refresh
-              = t('.refresh')
-            = link_to notebook_path(notebook), method: :delete, class: 'ui small basic button' do
-              %i.icon.close
-              = t('.delete')
-
