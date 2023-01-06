@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'Pages', type: :request do
+RSpec.describe 'Pages' do
   %i[help imprint].each do |page|
     describe "GET /#{page}" do
       it do

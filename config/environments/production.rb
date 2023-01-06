@@ -11,7 +11,7 @@ Rails.application.configure do
 
   config.log_level = :debug
   config.log_tags = [:request_id]
-  config.log_formatter = ::Logger::Formatter.new
+  config.log_formatter = Logger::Formatter.new
 
   config.action_mailer.perform_caching = false
   config.i18n.fallbacks = true

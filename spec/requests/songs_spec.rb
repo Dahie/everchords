@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Songs', type: :request do
+describe 'Songs' do
   describe '#show' do
     let(:song) { create(:song) }
 

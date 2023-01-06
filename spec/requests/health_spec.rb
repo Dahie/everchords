@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'Health', type: :request do
+RSpec.describe 'Health' do
   describe 'GET /health' do
     it do
       get('/health')

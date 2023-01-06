@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe 'Search', type: :request do
+RSpec.describe 'Search' do
   describe 'GET /search' do
     let(:song) { create(:song) }
 
