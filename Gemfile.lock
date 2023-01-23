@@ -217,7 +217,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    listen (3.7.1)
+    listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.19.1)
@@ -461,7 +461,7 @@ DEPENDENCIES
   interactor-rails
   jbuilder (~> 2.5)
   jquery-rails
-  listen (~> 3.7.1)
+  listen (~> 3.8.0)
   omniauth (~> 2)
   omniauth-evernote
   omniauth-rails_csrf_protection (~> 1.0.0)
