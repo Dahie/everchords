@@ -135,6 +135,8 @@ GEM
     devise-i18n (1.10.2)
       devise (>= 4.8.0)
     diff-lcs (1.5.0)
+    dockerfile-rails (1.0.18)
+      rails
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.3.0)
@@ -448,6 +450,7 @@ DEPENDENCIES
   database_cleaner
   devise
   devise-i18n
+  dockerfile-rails (>= 1.0)
   evernote_oauth
   evernote_utils
   factory_bot_rails
