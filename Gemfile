@@ -69,4 +69,4 @@ end
 
 gem 'importmap-rails', '~> 1.1'
 
-gem "dockerfile-rails", ">= 1.0", :group => :development
+gem "dockerfile-rails", ">= 1.0", group: :development
