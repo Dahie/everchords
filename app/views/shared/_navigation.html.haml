@@ -79,5 +79,5 @@
     .results
   - else
     = link_to t('.about_us'), help_path, class: 'ui simple item'
-    = button_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui simple right dropdown item'
+    = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted', 'turbo-method' => :post
 
