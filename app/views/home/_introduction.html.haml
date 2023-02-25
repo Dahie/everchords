@@ -7,7 +7,7 @@
       = link_to 'About us', help_path, class: 'item'
 
       .right.item
-        = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted', method: :post
+        = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted', 'turbo-method' => :post
   .ui.text.container
     %h1.ui.header
       Everchords
@@ -48,7 +48,7 @@
 
     = render 'shared/3_steps', step: 0
     %p
-      = button_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+      = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui button inverted', 'turbo-method' => :post
 
 
 
