@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-class UpdateNotebook
-  include Interactor
+class UpdateNotebook < Actor
+  input :notebook, type: Notebook
 
-  delegate :notebook, to: :context
   delegate :user, to: :notebook
   delegate :evernote_token, to: :user
 

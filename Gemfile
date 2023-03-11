@@ -27,7 +27,6 @@ gem 'friendly_id', '~> 5.5'
 gem 'haml-rails'
 gem 'html_to_plain_text'
 gem 'httparty'
-gem 'interactor-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'omniauth', '~> 2'
@@ -70,3 +69,5 @@ end
 gem 'importmap-rails', '~> 1.1'
 
 gem "dockerfile-rails", ">= 1.0", group: :development
+
+gem "service_actor-rails", "~> 1.0"

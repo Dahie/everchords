@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CreateOrUpdateSong
-  include Interactor
-
-  delegate :user, :notebook, :evernote_note, to: :context
+class CreateOrUpdateSong < Actor
+  input :user, type: User
+  input :evernote_note
+  input :notebook, type: Notebook
 
   def call
     song.update_from_evernote(evernote_note)
