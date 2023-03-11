@@ -195,10 +195,6 @@ GEM
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    interactor (3.1.2)
-    interactor-rails (2.2.1)
-      interactor (~> 3.0)
-      rails (>= 4.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -390,6 +386,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    service_actor (3.6.1)
+      zeitwerk
+    service_actor-rails (1.0.0)
+      rails (>= 4.2)
+      service_actor
     song_pro (0.1.10)
       markaby
     sprockets (4.2.0)
@@ -461,7 +462,6 @@ DEPENDENCIES
   html_to_plain_text
   httparty
   importmap-rails (~> 1.1)
-  interactor-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.8.0)
@@ -481,6 +481,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (>= 6)
   selenium-webdriver
+  service_actor-rails (~> 1.0)
   song_pro
   sprockets (= 4.2.0)
   sprockets-rails
