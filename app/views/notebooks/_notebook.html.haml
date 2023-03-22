@@ -9,7 +9,7 @@
     - notebook.songs.by_title.each do |song|
       %tr
         %td
-          = link_to user_song_path(song.user, song) do
+          = link_to user_song_path(song.user, song), 'data-turbo-frame' => '_top' do
             %i.icon.music
             = song.title
         %td.collapsing
