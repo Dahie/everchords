@@ -62,10 +62,12 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: 3.1.2
-      # we should consider adding security checks in our builds
-      # - name: Security audit dependencies
-      #   run: bin/bundler-audit --update
+      - name: Security audit dependencies
+        run: bin/bundler-audit --update
       # - name: Security audit application code
       #   run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
+      - name: Lighthouse Check
+        uses: foo-software/lighthouse-check-action@v10.0.0
+      
