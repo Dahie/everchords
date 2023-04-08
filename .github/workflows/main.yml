@@ -64,10 +64,24 @@ jobs:
           ruby-version: 3.1.2
       - name: Security audit dependencies
         uses: andrewmcodes/bundler-audit-action@main
-      # - name: Security audit application code
-      #   run: bin/brakeman -q -w2
+      - name: Security audit application code
+        uses: devmasx/brakeman-linter-action@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
-      - name: Lighthouse Check
-        uses: foo-software/lighthouse-check-action@v10.0.0
-      
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
+        with:
+          urls: 'https://www.pluz.care'
+      - name: Handle Lighthouse Check results
+        uses: ./
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "50"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "95"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"
+        
