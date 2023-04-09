@@ -16,7 +16,7 @@ AllCops:
     - '**/spec/system/**/*'
     - 'app/helpers/spree/base_helper.rb'
     - 'db/schema.rb'
-  TargetRubyVersion: 3.1.2
+  TargetRubyVersion: 3.2.2
 
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
@@ -690,5 +690,23 @@ Style/DirEmpty: # new in 1.48
 Style/FileEmpty: # new in 1.48
   Enabled: true
 Style/RedundantHeredocDelimiterQuotes: # new in 1.45
+  Enabled: true
+Style/DataInheritance: # new in 1.49
+  Enabled: true
+Style/RedundantLineContinuation: # new in 1.49
+  Enabled: true
+Rails/ResponseParsedBody: # new in 2.18
+  Enabled: true
+Rails/ThreeStateBooleanColumn: # new in 2.19
+  Enabled: true
+Capybara/MatchStyle: # new in 2.17
+  Enabled: true
+RSpec/RedundantAround: # new in 2.19
+  Enabled: true
+RSpec/SkipBlockInsideExample: # new in 2.19
+  Enabled: true
+RSpec/Rails/MinitestAssertions: # new in 2.17
+  Enabled: true
+RSpec/Rails/TravelAround: # new in 2.19
   Enabled: true
   
