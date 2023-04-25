@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0'
@@ -23,15 +23,15 @@ gem 'devise-i18n'
 gem 'evernote_oauth'
 gem 'evernote_utils'
 gem 'fomantic-ui-sass'
-gem 'friendly_id', '~> 5.5'
+gem 'friendly_id', '~> 5'
 gem 'haml-rails'
 gem 'html_to_plain_text'
 gem 'httparty'
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2'
 gem 'jquery-rails'
-gem 'omniauth', '~> 2'
+gem 'omniauth'
 gem 'omniauth-evernote'
-gem 'omniauth-rails_csrf_protection', '~> 1.0.0'
+gem 'omniauth-rails_csrf_protection', '~> 1'
 gem 'pg'
 gem 'rails_admin', '3.1.1'
 gem 'rails_admin_aasm'
@@ -66,8 +66,8 @@ group :development do
   gem 'web-console'
 end
 
-gem 'importmap-rails', '~> 1.1'
+gem 'importmap-rails', '~> 1'
 
 gem "dockerfile-rails", ">= 1.0", group: :development
 
-gem "service_actor-rails", "~> 1.0"
+gem "service_actor-rails", "~> 1"
