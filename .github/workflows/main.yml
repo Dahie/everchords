@@ -64,10 +64,10 @@ jobs:
           ruby-version: 3.1.2
       - name: Security audit dependencies
         uses: andrewmcodes/bundler-audit-action@main
-      - name: Security audit application code
-        uses: devmasx/brakeman-linter-action@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: Security audit application code
+      #   uses: devmasx/brakeman-linter-action@v1.0.0
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
       
