@@ -17,7 +17,7 @@ AllCops:
     - '**/spec/system/**/*'
     - 'app/helpers/spree/base_helper.rb'
     - 'db/schema.rb'
-  TargetRubyVersion: 3.2.2
+  TargetRubyVersion: 3.1.2
 
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
