@@ -18,7 +18,7 @@ AllCops:
     - '**/spec/system/**/*'
     - 'app/helpers/spree/base_helper.rb'
     - 'db/schema.rb'
-  TargetRubyVersion: 3.1.2
+  TargetRubyVersion: 3.1.3
 
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
@@ -629,7 +629,7 @@ RSpec/ChangeByZero: # new in 2.11.0
   Enabled: true
 RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
-RSpec/FactoryBot/SyntaxMethods: # new in 2.7
+FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: true
 RSpec/NestedGroups:
   Enabled: false
@@ -671,9 +671,9 @@ Capybara/SpecificFinders: # new in 2.13
   Enabled: true
 Capybara/SpecificMatcher: # new in 2.12
   Enabled: true
-RSpec/FactoryBot/ConsistentParenthesesStyle: # new in 2.14
+FactoryBot/ConsistentParenthesesStyle: # new in 2.14
   Enabled: true
-RSpec/FactoryBot/FactoryNameStyle: # new in 2.16
+FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 RSpec/Rails/HaveHttpStatus: # new in 2.12
   Enabled: true
@@ -743,14 +743,11 @@ Style/YAMLFileRead: # new in 1.53
   Enabled: true
 FactoryBot/AssociationStyle: # new in 2.23
   Enabled: true
-FactoryBot/ConsistentParenthesesStyle: # new in 2.14
-  Enabled: true
 FactoryBot/FactoryAssociationWithStrategy: # new in 2.23
-  Enabled: true
-FactoryBot/FactoryNameStyle: # new in 2.16
   Enabled: true
 FactoryBot/RedundantFactoryOption: # new in 2.23
   Enabled: true
-FactoryBot/SyntaxMethods: # new in 2.7
+RSpec/ReceiveMessages: # new in 2.23
   Enabled: true
-  
+RSpec/Rails/NegationBeValid: # new in 2.23
+  Enabled: true

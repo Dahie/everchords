@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0'
@@ -66,6 +66,8 @@ group :development do
   gem 'listen', '~> 3.8.0'
   gem 'web-console'
 end
+
+gem 'openssl'
 
 gem 'importmap-rails', '~> 1'
 
