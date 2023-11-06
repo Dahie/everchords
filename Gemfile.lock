@@ -134,7 +134,7 @@ GEM
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
     diff-lcs (1.5.0)
-    dockerfile-rails (1.5.10)
+    dockerfile-rails (1.5.12)
       rails (>= 3.0.0)
     dry-core (0.9.1)
       concurrent-ruby (~> 1.0)
@@ -239,7 +239,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     nested_form (0.3.2)
-    net-imap (0.4.1)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -283,7 +283,7 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-protection (3.0.6)
       rack
