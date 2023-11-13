@@ -167,7 +167,7 @@ GEM
       sassc (>= 2.2)
       sassc-rails (>= 2.1)
       sprockets-rails (>= 2.1.3)
-    friendly_id (5.5.0)
+    friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     gambiarra (0.0.6)
       activesupport (> 5.2)
