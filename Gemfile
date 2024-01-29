@@ -69,7 +69,7 @@ end
 
 gem 'openssl'
 
-gem 'importmap-rails', '~> 1'
+gem 'importmap-rails', '~> 2'
 
 gem "dockerfile-rails", ">= 1.0", group: :development
 
