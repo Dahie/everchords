@@ -155,9 +155,9 @@ GEM
       evernote-thrift (~> 1.25.1)
       roadie
     execjs (2.8.1)
-    factory_bot (6.4.2)
+    factory_bot (6.4.6)
       activesupport (>= 5.0.0)
-    factory_bot_rails (6.4.2)
+    factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
     faker (3.2.3)
@@ -237,7 +237,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     nested_form (0.3.2)
@@ -458,7 +458,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
   ruby
