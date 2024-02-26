@@ -63,7 +63,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'listen', '~> 3.8.0'
+  gem 'listen', '~> 3.9.0'
   gem 'web-console'
 end
 
