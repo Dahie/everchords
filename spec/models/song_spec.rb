@@ -116,7 +116,7 @@ describe Song do
   describe '#update_from_evernote' do
     let(:content) { 'foo' }
     let(:title) { 'bar' }
-    let(:evernote_note) { double(:evernote_note, content:, title:) }  # rubocop:disable RSpec/VerifiedDoubles
+    let(:evernote_note) { double(:evernote_note, content:, title:) } # rubocop:disable RSpec/VerifiedDoubles
 
     it 'updates title' do
       expect do
