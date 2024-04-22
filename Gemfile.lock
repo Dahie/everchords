@@ -163,7 +163,7 @@ GEM
     faker (3.3.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
-    fomantic-ui-sass (2.8.8.1)
+    fomantic-ui-sass (2.9.3)
       autoprefixer-rails
       railties (>= 3.2.0)
       sassc (>= 2.2)
@@ -486,7 +486,7 @@ DEPENDENCIES
   evernote_utils
   factory_bot_rails
   faker
-  fomantic-ui-sass (~> 2.8, < 2.9)
+  fomantic-ui-sass (~> 2.9)
   friendly_id (~> 5)
   haml-rails
   html_to_plain_text
