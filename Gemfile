@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby File.read(".ruby-version").strip
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.0'
@@ -64,6 +64,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.9.0'
+  gem "ruby-lsp-rspec", require: false
   gem 'web-console'
 end
 
