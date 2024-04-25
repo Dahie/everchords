@@ -43,7 +43,7 @@ ARG YARN_VERSION=1.22.19
 RUN npm install -g yarn@$YARN_VERSION
 
 # Install application gems
-COPY Gemfile Gemfile.lock ./
+COPY .ruby-version Gemfile Gemfile.lock ./
 RUN bundle _${BUNDLER_VERSION}_ install
 
 # Install node modules
