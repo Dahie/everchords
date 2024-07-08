@@ -33,7 +33,7 @@ gem 'omniauth'
 gem 'omniauth-evernote'
 gem 'omniauth-rails_csrf_protection', '~> 1'
 gem 'pg'
-gem 'rails_admin', '3.1.2'
+gem 'rails_admin', '3.1.3'
 gem 'rails_admin_aasm'
 gem 'song_pro'
 gem 'sprockets', '4.2.1'
@@ -53,8 +53,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-factory_bot'
+  gem 'rubocop-capybara'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'rubocop-rspec_rails'
   gem 'rubocop-performance'
   gem 'selenium-webdriver'
   gem 'webdrivers'
@@ -75,3 +77,4 @@ gem 'importmap-rails', '~> 2'
 gem "dockerfile-rails", ">= 1.0", group: :development
 
 gem "service_actor-rails", "~> 1"
+gem "cssbundling-rails"
