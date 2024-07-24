@@ -90,7 +90,7 @@ GEM
       debug_inspector (>= 1.2.0)
     brakeman (6.1.2)
       racc
-    builder (3.2.4)
+    builder (3.3.0)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
@@ -146,7 +146,7 @@ GEM
     dry-monads (0.4.0)
       dry-core (~> 0.3, >= 0.3.3)
       dry-equalizer
-    erubi (1.12.0)
+    erubi (1.13.0)
     evernote-thrift (1.25.2)
     evernote_oauth (0.2.3)
       evernote-thrift
@@ -239,11 +239,11 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
-    minitest (5.23.1)
+    minitest (5.24.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     nested_form (0.3.2)
-    net-imap (0.4.12)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -253,7 +253,7 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5)
+    nokogiri (1.16.6)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     oauth (1.1.0)
@@ -320,7 +320,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_admin (3.1.2)
+    rails_admin (3.1.4)
       activemodel-serializers-xml (>= 1.0)
       kaminari (>= 0.14, < 2.0)
       nested_form (~> 0.3)
@@ -473,7 +473,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   ruby
@@ -515,7 +515,7 @@ DEPENDENCIES
   puma (~> 6)
   rails (~> 7.0)
   rails-controller-testing
-  rails_admin (= 3.1.2)
+  rails_admin (= 3.1.4)
   rails_admin_aasm
   rspec-rails
   rubocop
