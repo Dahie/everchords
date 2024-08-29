@@ -282,8 +282,7 @@ GEM
     openssl (3.2.0)
     orm_adapter (0.5.0)
     paint (2.3.0)
-    parallel (1.25.1)
-    parallel (1.24.0)
+    parallel (1.26.3)
     parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
@@ -352,8 +351,8 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.3.6)
-      strscan (>= 3.0.9)
       strscan
+      strscan (>= 3.0.9)
     roadie (5.2.1)
       css_parser (~> 1.4)
       nokogiri (~> 1.15)
@@ -388,8 +387,6 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
-    rubocop-ast (1.31.2)
-      parser (>= 3.3.0.4)
     rubocop-capybara (2.21.0)
       rubocop (~> 1.41)
     rubocop-factory_bot (2.26.1)
