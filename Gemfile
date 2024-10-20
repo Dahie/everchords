@@ -14,7 +14,6 @@ gem 'sass-rails', '>= 6'
 
 # Use of devise and Omniauth for authentication
 gem 'aasm'
-gem 'appsignal'
 gem 'cancancan'
 gem 'chord_diagrams'
 gem 'coltrane'
