@@ -140,6 +140,7 @@ GEM
     diff-lcs (1.5.1)
     dockerfile-rails (1.6.24)
       rails (>= 3.0.0)
+    drb (2.2.1)
     dry-core (0.9.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
@@ -504,6 +505,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dockerfile-rails
+  drb
   evernote_oauth
   evernote_utils
   factory_bot_rails
