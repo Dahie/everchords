@@ -10,15 +10,15 @@ require:
 
 AllCops:
   Exclude:
-    - 'vendor/**/*'
-    - '**/vendor/**/*'
-    - '*/spec/dummy/**/*'
-    - 'sandbox/**/*'
-    - '**/templates/**/*'
-    - 'guides/node_modules/**/*'
-    - '**/spec/system/**/*'
-    - 'app/helpers/spree/base_helper.rb'
-    - 'db/schema.rb'
+    - "vendor/**/*"
+    - "**/vendor/**/*"
+    - "*/spec/dummy/**/*"
+    - "sandbox/**/*"
+    - "**/templates/**/*"
+    - "guides/node_modules/**/*"
+    - "**/spec/system/**/*"
+    - "app/helpers/spree/base_helper.rb"
+    - "db/schema.rb"
   TargetRubyVersion: 3.3.4
 
 Gemspec/DeprecatedAttributeAssignment:
@@ -198,7 +198,6 @@ Rails/WhereExists: # new in 2.7
 Rails/WhereNot: # new in 2.8
   Enabled: true
 
-
 # We use class vars and will have to continue doing so for compatability
 Style/ClassVars:
   Enabled: false
@@ -304,7 +303,7 @@ Rails/DynamicFindBy:
 # It's okay to skip model validations to setup a spec.
 Rails/SkipsModelValidations:
   Exclude:
-    - '**/spec/**/*'
+    - "**/spec/**/*"
 
 # We use a lot of
 #
@@ -315,15 +314,15 @@ Rails/SkipsModelValidations:
 # syntax in the specs files.
 Lint/AmbiguousBlockAssociation:
   Exclude:
-    - '*/spec/**/*'
-    - 'spec/**/*' # For the benefit of apps that inherit from this config
+    - "*/spec/**/*"
+    - "spec/**/*" # For the benefit of apps that inherit from this config
 
 # We use eval to add common_spree_dependencies into the Gemfiles of each of our gems
 Security/Eval:
   Exclude:
-    - 'Gemfile'
-    - 'common_spree_dependencies.rb'
-    - '*/Gemfile'
+    - "Gemfile"
+    - "common_spree_dependencies.rb"
+    - "*/Gemfile"
 
 Naming/VariableNumber:
   Enabled: false
@@ -518,7 +517,7 @@ Lint/SuppressedException:
 Style/RedundantPercentQ:
   Enabled: true
   Exclude:
-    - 'spec/components/image_component_spec.rb'
+    - "spec/components/image_component_spec.rb"
 
 Layout/LineContinuationLeadingSpace: # new in 1.31
   Enabled: true
@@ -825,4 +824,30 @@ Style/RedundantInterpolationUnfreeze: # new in 1.66
 Rails/EnumSyntax: # new in 2.26
   Enabled: true
 RSpec/StringAsInstanceDoubleConstant: # new in 3.1
+  Enabled: true
+Lint/HashNewWithKeywordArgumentsAsDefault: # new in 1.69
+  Enabled: true
+Lint/NumericOperationWithConstantResult: # new in 1.69
+  Enabled: true
+Lint/UnescapedBracketInRegexp: # new in 1.68
+  Enabled: true
+Lint/UselessDefined: # new in 1.69
+  Enabled: true
+Style/AmbiguousEndlessMethodDefinition: # new in 1.68
+  Enabled: true
+Style/BitwisePredicate: # new in 1.68
+  Enabled: true
+Style/CombinableDefined: # new in 1.68
+  Enabled: true
+Style/DigChain: # new in 1.69
+  Enabled: true
+Style/FileNull: # new in 1.69
+  Enabled: true
+Style/FileTouch: # new in 1.69
+  Enabled: true
+Style/KeywordArgumentsMerging: # new in 1.68
+  Enabled: true
+Style/SafeNavigationChainLength: # new in 1.68
+  Enabled: true
+Performance/StringBytesize: # new in 1.23
   Enabled: true

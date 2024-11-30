@@ -76,7 +76,5 @@ gem 'openssl'
 
 gem 'importmap-rails', '~> 2'
 
-
-
 gem "service_actor-rails", "~> 1"
 gem "cssbundling-rails"
