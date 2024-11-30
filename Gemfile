@@ -14,12 +14,12 @@ gem 'sass-rails', '>= 6'
 
 # Use of devise and Omniauth for authentication
 gem 'aasm'
-gem 'appsignal'
 gem 'cancancan'
 gem 'chord_diagrams'
 gem 'coltrane'
 gem 'devise'
 gem 'devise-i18n'
+gem 'drb'
 gem 'evernote_oauth'
 gem 'evernote_utils'
 gem 'fomantic-ui-sass', '~> 2.8', '< 2.9'
@@ -29,6 +29,7 @@ gem 'html_to_plain_text'
 gem 'httparty'
 gem 'jbuilder', '~> 2'
 gem 'jquery-rails'
+gem 'mutex_m'
 gem 'omniauth'
 gem 'omniauth-evernote'
 gem 'omniauth-rails_csrf_protection', '~> 1'
@@ -64,6 +65,7 @@ end
 
 group :development do
   gem 'better_errors'
+  gem "dockerfile-rails"
   gem 'binding_of_caller'
   gem 'listen', '~> 3.9.0'
   gem "ruby-lsp-rspec", require: false
@@ -73,8 +75,6 @@ end
 gem 'openssl'
 
 gem 'importmap-rails', '~> 2'
-
-gem "dockerfile-rails", ">= 1.0", group: :development
 
 gem "service_actor-rails", "~> 1"
 gem "cssbundling-rails"
