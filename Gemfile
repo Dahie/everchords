@@ -64,6 +64,7 @@ end
 
 group :development do
   gem 'better_errors'
+  gem "dockerfile-rails"
   gem 'binding_of_caller'
   gem 'listen', '~> 3.9.0'
   gem "ruby-lsp-rspec", require: false
@@ -74,7 +75,7 @@ gem 'openssl'
 
 gem 'importmap-rails', '~> 2'
 
-gem "dockerfile-rails", ">= 1.0", group: :development
+
 
 gem "service_actor-rails", "~> 1"
 gem "cssbundling-rails"

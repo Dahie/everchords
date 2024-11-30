@@ -2,23 +2,6 @@
 
 ---
 options:
-  bin-cd: false
-  cache: false
-  ci: false
-  compose: false
-  fullstaq: false
-  jemalloc: false
   label:
     fly_launch_runtime: rails
-  mysql: false
-  nginx: false
-  parallel: false
-  platform:
   postgresql: true
-  precompile:
-  prepare: true
-  redis: false
-  root: false
-  swap:
-  yjit: false
-  packages: {}
